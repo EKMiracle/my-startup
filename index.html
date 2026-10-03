@@ -1,0 +1,1168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>StudentCV AI</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background:
+                radial-gradient(circle at 20% 10%, #35106b 0%, transparent 30%),
+                radial-gradient(circle at 80% 20%, #24104a 0%, transparent 25%),
+                #08060d;
+            color: #ffffff;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* =========================
+           NAVIGATION
+        ========================= */
+
+        nav {
+            width: 100%;
+            padding: 20px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            background: rgba(8, 6, 13, 0.75);
+            backdrop-filter: blur(15px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .nav-logo i {
+            color: #a855f7;
+            font-size: 25px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: #c8c3d1;
+            text-decoration: none;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ffffff;
+        }
+
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+            padding: 110px 20px 100px;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        /* Floating student/career elements */
+
+        .floating-elements {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .floating-icon {
+            position: absolute;
+            color: #a855f7;
+            opacity: 0.12;
+            font-size: 45px;
+            filter: drop-shadow(0 0 15px rgba(168, 85, 247, 0.5));
+        }
+
+        .icon-1 {
+            left: 5%;
+            top: 25%;
+            font-size: 55px;
+            animation: float1 7s ease-in-out infinite;
+        }
+
+        .icon-2 {
+            left: 16%;
+            top: 67%;
+            font-size: 42px;
+            animation: float2 9s ease-in-out infinite;
+        }
+
+        .icon-3 {
+            right: 7%;
+            top: 28%;
+            font-size: 52px;
+            animation: float3 8s ease-in-out infinite;
+        }
+
+        .icon-4 {
+            right: 19%;
+            top: 70%;
+            font-size: 45px;
+            animation: float1 10s ease-in-out infinite;
+        }
+
+        .icon-5 {
+            left: 29%;
+            top: 17%;
+            font-size: 35px;
+            animation: float3 8s ease-in-out infinite;
+        }
+
+        .icon-6 {
+            right: 28%;
+            top: 75%;
+            font-size: 38px;
+            animation: float2 7s ease-in-out infinite;
+        }
+
+        .icon-7 {
+            left: 3%;
+            top: 48%;
+            font-size: 30px;
+            animation: float2 11s ease-in-out infinite;
+        }
+
+        .icon-8 {
+            right: 3%;
+            top: 55%;
+            font-size: 32px;
+            animation: float1 9s ease-in-out infinite;
+        }
+
+
+        /* Floating animations */
+
+        @keyframes float1 {
+
+            0%, 100% {
+                transform: translateY(0px) rotate(-5deg);
+            }
+
+            50% {
+                transform: translateY(-25px) rotate(5deg);
+            }
+
+        }
+
+        @keyframes float2 {
+
+            0%, 100% {
+                transform: translate(0, 0) rotate(5deg);
+            }
+
+            50% {
+                transform: translate(15px, -30px) rotate(-5deg);
+            }
+
+        }
+
+        @keyframes float3 {
+
+            0%, 100% {
+                transform: translateY(0px) rotate(3deg);
+            }
+
+            50% {
+                transform: translate(-15px, -20px) rotate(-6deg);
+            }
+
+        }
+
+
+        /* Hero content */
+
+        .hero > *:not(.floating-elements) {
+            position: relative;
+            z-index: 2;
+        }
+
+        .ai-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 15px;
+            border-radius: 30px;
+            background: rgba(168, 85, 247, 0.12);
+            border: 1px solid rgba(168, 85, 247, 0.3);
+            color: #c084fc;
+            font-size: 14px;
+            margin-bottom: 25px;
+        }
+
+        .ai-badge i {
+            font-size: 13px;
+        }
+
+        .hero h1 {
+            font-size: clamp(48px, 7vw, 82px);
+            line-height: 1.05;
+            letter-spacing: -3px;
+            margin-bottom: 25px;
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #a855f7, #d8b4fe);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            max-width: 700px;
+            margin: auto;
+            color: #aaa3b5;
+            font-size: 19px;
+        }
+
+        .hero-buttons {
+            margin-top: 35px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .primary-button,
+        .secondary-button {
+            padding: 14px 25px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .primary-button {
+            background: linear-gradient(135deg, #7e22ce, #a855f7);
+            color: white;
+            box-shadow: 0 0 25px rgba(168,85,247,0.25);
+        }
+
+        .primary-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 35px rgba(168,85,247,0.45);
+        }
+
+        .secondary-button {
+            border: 1px solid #3b3347;
+            color: #ddd6e5;
+            background: rgba(255,255,255,0.03);
+        }
+
+        .secondary-button:hover {
+            background: rgba(255,255,255,0.07);
+        }
+
+
+        /* =========================
+           GENERAL
+        ========================= */
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 80px 25px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 38px;
+            margin-bottom: 15px;
+        }
+
+        .section-description {
+            text-align: center;
+            color: #9991a5;
+            max-width: 650px;
+            margin: auto auto 50px;
+        }
+
+
+        /* =========================
+           FEATURES
+        ========================= */
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .feature-card {
+            padding: 30px;
+            border-radius: 18px;
+            background: linear-gradient(
+                145deg,
+                rgba(255,255,255,0.07),
+                rgba(255,255,255,0.025)
+            );
+            border: 1px solid rgba(255,255,255,0.08);
+            transition: 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(168,85,247,0.5);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.35);
+        }
+
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 12px;
+            background: rgba(168,85,247,0.15);
+            color: #c084fc;
+            font-size: 21px;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+
+        .feature-card p {
+            color: #9991a5;
+            font-size: 15px;
+        }
+
+
+        /* =========================
+           PROBLEM SECTION
+        ========================= */
+
+        .problem {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .problem-text h2 {
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+
+        .problem-text p {
+            color: #aaa3b5;
+            margin-bottom: 15px;
+        }
+
+        .problem-box {
+            padding: 35px;
+            border-radius: 20px;
+            background: linear-gradient(
+                145deg,
+                #160d22,
+                #0e0a13
+            );
+            border: 1px solid #2e203a;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+        }
+
+        .problem-box h3 {
+            margin-bottom: 20px;
+        }
+
+        .problem-box div {
+            padding: 13px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.04);
+            color: #bbb3c4;
+        }
+
+        .problem-box i {
+            color: #a855f7;
+            margin-right: 10px;
+        }
+
+
+        /* =========================
+           PRICING
+        ========================= */
+
+        .pricing {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .plan {
+            position: relative;
+            padding: 35px;
+            border-radius: 20px;
+            background: linear-gradient(
+                145deg,
+                rgba(255,255,255,0.06),
+                rgba(255,255,255,0.02)
+            );
+            border: 1px solid rgba(255,255,255,0.08);
+            transition: 0.3s;
+        }
+
+        .plan:hover {
+            transform: translateY(-8px);
+        }
+
+        .plan.pro {
+            border: 1px solid #9333ea;
+            box-shadow: 0 0 40px rgba(147,51,234,0.12);
+        }
+
+        .popular {
+            position: absolute;
+            top: -13px;
+            right: 25px;
+            background: #9333ea;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: bold;
+        }
+
+        .plan h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .price {
+            font-size: 38px;
+            font-weight: bold;
+            margin-bottom: 25px;
+        }
+
+        .price span {
+            font-size: 14px;
+            color: #88818f;
+            font-weight: normal;
+        }
+
+        .plan ul {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .plan li {
+            color: #aaa3b5;
+            margin-bottom: 12px;
+            font-size: 14px;
+        }
+
+        .plan li i {
+            color: #a855f7;
+            margin-right: 8px;
+        }
+
+        .plan-button {
+            display: block;
+            text-align: center;
+            padding: 12px;
+            border-radius: 9px;
+            text-decoration: none;
+            color: white;
+            background: #21152d;
+            border: 1px solid #392647;
+            transition: 0.3s;
+        }
+
+        .plan-button:hover {
+            background: #7e22ce;
+        }
+
+        .pro .plan-button {
+            background: linear-gradient(135deg, #7e22ce, #a855f7);
+            border: none;
+        }
+
+
+        /* =========================
+           CONTACT
+        ========================= */
+
+        .contact {
+            text-align: center;
+        }
+
+        .contact-card {
+            max-width: 600px;
+            margin: auto;
+            padding: 35px;
+            border-radius: 20px;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .contact-card p {
+            color: #aaa3b5;
+            margin-bottom: 20px;
+        }
+
+        .email {
+            color: #c084fc;
+            font-size: 18px;
+            text-decoration: none;
+        }
+
+
+        /* =========================
+           SOCIAL MEDIA
+        ========================= */
+
+        .social-links {
+            position: fixed;
+            right: 25px;
+            bottom: 25px;
+            display: flex;
+            gap: 10px;
+            z-index: 200;
+        }
+
+        .social-links a {
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(24,17,31,0.9);
+            border: 1px solid #3a2945;
+            color: #c084fc;
+            text-decoration: none;
+            backdrop-filter: blur(10px);
+            transition: 0.3s;
+        }
+
+        .social-links a:hover {
+            background: #7e22ce;
+            color: white;
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(126,34,206,0.4);
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            text-align: center;
+            padding: 35px;
+            border-top: 1px solid rgba(255,255,255,0.07);
+            color: #6f6878;
+            font-size: 14px;
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 800px) {
+
+            .features,
+            .pricing {
+                grid-template-columns: 1fr;
+            }
+
+            .problem {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                padding-top: 80px;
+            }
+
+            .hero h1 {
+                letter-spacing: -2px;
+            }
+
+            .social-links {
+                right: 15px;
+                bottom: 15px;
+            }
+
+            .floating-icon {
+                opacity: 0.07;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         NAVIGATION
+    ========================= -->
+
+    <nav>
+
+        <div class="nav-logo">
+            <i class="fa-solid fa-robot"></i>
+            StudentCV AI
+        </div>
+
+        <div class="nav-links">
+            <a href="#features">Features</a>
+            <a href="#problem">How it works</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#contact">Contact</a>
+        </div>
+
+    </nav>
+
+
+    <!-- =========================
+         HERO
+    ========================= -->
+
+    <section class="hero">
+
+
+        <!-- Floating elements -->
+
+        <div class="floating-elements">
+
+            <i class="fa-solid fa-book-open floating-icon icon-1"></i>
+
+            <i class="fa-solid fa-graduation-cap floating-icon icon-2"></i>
+
+            <i class="fa-solid fa-briefcase floating-icon icon-3"></i>
+
+            <i class="fa-solid fa-file-lines floating-icon icon-4"></i>
+
+            <i class="fa-solid fa-user-tie floating-icon icon-5"></i>
+
+            <i class="fa-solid fa-robot floating-icon icon-6"></i>
+
+            <i class="fa-solid fa-pencil floating-icon icon-7"></i>
+
+            <i class="fa-solid fa-lightbulb floating-icon icon-8"></i>
+
+        </div>
+
+
+        <!-- AI badge -->
+
+        <div class="ai-badge">
+
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+
+            AI-powered career assistant
+
+        </div>
+
+
+        <!-- Main title -->
+
+        <h1>
+
+            Turn your story into a
+
+            <span class="gradient-text">
+                career opportunity.
+            </span>
+
+        </h1>
+
+
+        <p>
+
+            StudentCV AI helps students and young professionals transform
+            scattered information about themselves into clear, professional
+            and HR-friendly presentations.
+
+        </p>
+
+
+        <div class="hero-buttons">
+
+            <a href="#pricing" class="primary-button">
+
+                Get started
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </a>
+
+
+            <a href="#features" class="secondary-button">
+
+                Explore features
+
+            </a>
+
+        </div>
+
+
+    </section>
+
+
+    <!-- =========================
+         FEATURES
+    ========================= -->
+
+    <section class="container" id="features">
+
+        <h2 class="section-title">
+            Everything you need to present yourself
+        </h2>
+
+        <p class="section-description">
+
+            Stop sending recruiters a document filled with random information.
+            StudentCV AI helps you communicate what actually matters.
+
+        </p>
+
+
+        <div class="features">
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+                </div>
+
+                <h3>AI Assistance</h3>
+
+                <p>
+                    Get intelligent suggestions for presenting your experience,
+                    skills and achievements.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    <i class="fa-solid fa-file-lines"></i>
+                </div>
+
+                <h3>Professional CV</h3>
+
+                <p>
+                    Turn your personal information into a structured,
+                    professional CV.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    <i class="fa-solid fa-user-tie"></i>
+                </div>
+
+                <h3>HR-focused</h3>
+
+                <p>
+                    Learn how to highlight the information recruiters are
+                    actually looking for.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         PROBLEM
+    ========================= -->
+
+    <section class="container" id="problem">
+
+        <div class="problem">
+
+
+            <div class="problem-text">
+
+                <h2>
+                    Your experience deserves
+                    better than a messy Word file.
+                </h2>
+
+                <p>
+                    Students often have skills, projects, education and
+                    achievements — but don't know how to present them.
+                </p>
+
+                <p>
+                    StudentCV AI organizes your information and helps turn
+                    it into a professional personal profile.
+                </p>
+
+            </div>
+
+
+            <div class="problem-box">
+
+                <h3>
+
+                    <i class="fa-solid fa-bolt"></i>
+
+                    StudentCV AI
+
+                </h3>
+
+
+                <div>
+
+                    <i class="fa-solid fa-check"></i>
+
+                    Structured information
+
+                </div>
+
+
+                <div>
+
+                    <i class="fa-solid fa-check"></i>
+
+                    Professional language
+
+                </div>
+
+
+                <div>
+
+                    <i class="fa-solid fa-check"></i>
+
+                    Skills highlighted
+
+                </div>
+
+
+                <div>
+
+                    <i class="fa-solid fa-check"></i>
+
+                    HR-friendly presentation
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         PRICING
+    ========================= -->
+
+    <section class="container" id="pricing">
+
+        <h2 class="section-title">
+            Simple pricing
+        </h2>
+
+        <p class="section-description">
+
+            Choose the plan that fits your career goals.
+
+        </p>
+
+
+        <div class="pricing">
+
+
+            <!-- LIGHT -->
+
+            <div class="plan">
+
+                <h3>Light</h3>
+
+                <div class="price">
+
+                    €4.99
+
+                    <span>/ month</span>
+
+                </div>
+
+
+                <ul>
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        Basic AI assistance
+                    </li>
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        CV structure
+                    </li>
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        Basic recommendations
+                    </li>
+
+                </ul>
+
+
+                <a href="#" class="plan-button">
+
+                    Choose Light
+
+                </a>
+
+            </div>
+
+
+            <!-- PRO -->
+
+            <div class="plan pro">
+
+                <div class="popular">
+                    MOST POPULAR
+                </div>
+
+
+                <h3>PRO</h3>
+
+
+                <div class="price">
+
+                    €9.99
+
+                    <span>/ month</span>
+
+                </div>
+
+
+                <ul>
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        Advanced AI assistance
+                    </li>
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        Professional CV
+                    </li>
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        HR recommendations
+                    </li>
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        Personal presentation
+                    </li>
+
+                </ul>
+
+
+                <a href="#" class="plan-button">
+
+                    Choose PRO
+
+                </a>
+
+            </div>
+
+
+            <!-- ULTRA -->
+
+            <div class="plan">
+
+                <h3>ULTRA</h3>
+
+
+                <div class="price">
+
+                    €19.99
+
+                    <span>/ month</span>
+
+                </div>
+
+
+                <ul>
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        Unlimited AI assistance
+                    </li>
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        Advanced CV optimization
+                    </li>
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        HR-focused analysis
+                    </li>
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        Interview preparation
+                    </li>
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        Priority support
+                    </li>
+
+                </ul>
+
+
+                <a href="#" class="plan-button">
+
+                    Choose ULTRA
+
+                </a>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         CONTACT
+    ========================= -->
+
+    <section class="container contact" id="contact">
+
+        <h2 class="section-title">
+
+            Ready to build your professional profile?
+
+        </h2>
+
+
+        <p class="section-description">
+
+            Start turning your experience into something recruiters can
+            actually understand.
+
+        </p>
+
+
+        <div class="contact-card">
+
+            <p>
+                Have questions or want to learn more?
+            </p>
+
+
+            <a href="mailto:info@studentcv.ai" class="email">
+
+                info@studentcv.ai
+
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         SOCIAL MEDIA
+    ========================= -->
+
+    <div class="social-links">
+
+
+        <a href="https://www.instagram.com/"
+           target="_blank"
+           aria-label="Instagram">
+
+            <i class="fa-brands fa-instagram"></i>
+
+        </a>
+
+
+        <a href="https://www.linkedin.com/"
+           target="_blank"
+           aria-label="LinkedIn">
+
+            <i class="fa-brands fa-linkedin-in"></i>
+
+        </a>
+
+
+        <a href="https://www.facebook.com/"
+           target="_blank"
+           aria-label="Facebook">
+
+            <i class="fa-brands fa-facebook-f"></i>
+
+        </a>
+
+
+    </div>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer>
+
+        © 2026 StudentCV AI. All rights reserved.
+
+    </footer>
+
+
+</body>
+</html>
