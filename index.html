@@ -1043,6 +1043,34 @@ footer{
   margin-bottom:14px;
 }
 
+
+/* DASHBOARD */
+.dashboard-overlay{position:fixed;inset:0;z-index:2000;display:none;background:rgba(4,2,8,.78);backdrop-filter:blur(18px);overflow-y:auto;padding:30px 20px}
+.dashboard-overlay.open{display:block;animation:dashFade .22s ease}
+@keyframes dashFade{from{opacity:0}to{opacity:1}}
+.dashboard-shell{width:min(1180px,100%);min-height:calc(100vh - 60px);margin:auto;border:1px solid rgba(255,255,255,.1);border-radius:28px;background:radial-gradient(circle at 80% 0,rgba(168,55,255,.12),transparent 30%),#0b0711;box-shadow:0 35px 120px rgba(0,0,0,.65);overflow:hidden}
+.dashboard-top{height:76px;padding:0 24px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.07)}
+.dashboard-top-left{display:flex;align-items:center;gap:14px}.dashboard-title{font-family:"Space Grotesk";font-size:17px;font-weight:700}.dashboard-subtitle{font-size:10px;color:#807789;margin-top:3px}
+.dashboard-close{width:38px;height:38px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.045);color:#aaa;border-radius:11px;cursor:pointer}
+.dashboard-body{display:grid;grid-template-columns:215px 1fr;min-height:650px}.dashboard-sidebar{padding:22px 14px;border-right:1px solid rgba(255,255,255,.07)}
+.dash-nav{width:100%;border:0;background:transparent;color:#8f8797;padding:12px 13px;border-radius:11px;text-align:left;cursor:pointer;font-size:11px;margin-bottom:4px;transition:.2s}.dash-nav i{width:20px;margin-right:8px}.dash-nav:hover,.dash-nav.active{color:#fff;background:rgba(169,61,255,.11)}
+.dashboard-content{padding:32px}.dash-page{display:none}.dash-page.active{display:block;animation:dashPage .22s ease}
+@keyframes dashPage{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+.dash-heading{font-family:"Space Grotesk";font-size:32px;letter-spacing:-1.5px}.dash-muted{color:#8e8697;font-size:12px;line-height:1.6;margin-top:8px}
+.dash-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:25px}.dash-card{padding:22px;border:1px solid rgba(255,255,255,.08);border-radius:18px;background:rgba(255,255,255,.035)}
+.dash-card-label{font-size:9px;text-transform:uppercase;letter-spacing:1.7px;color:#817889}.dash-card-value{font-family:"Space Grotesk";font-size:27px;font-weight:700;margin-top:10px}.dash-card-value.purple{color:#cf7bff}.dash-card-small{font-size:10px;color:#777080;margin-top:5px}
+.plan-card{margin-top:14px;padding:24px;border:1px solid rgba(190,70,255,.25);border-radius:20px;background:radial-gradient(circle at 90% 0,rgba(171,54,255,.14),transparent 40%),rgba(255,255,255,.035);display:flex;align-items:center;justify-content:space-between;gap:20px}
+.plan-badge{display:inline-flex;padding:6px 9px;border-radius:8px;background:#9e39f4;font-size:9px;font-weight:700;letter-spacing:1px}.plan-name{font-family:"Space Grotesk";font-size:22px;margin-top:10px}
+.progress{height:6px;background:rgba(255,255,255,.07);border-radius:10px;overflow:hidden;margin-top:12px}.progress span{display:block;width:23%;height:100%;background:linear-gradient(90deg,#8b45ff,#ee4bd6)}
+.dash-section-title{font-family:"Space Grotesk";font-size:18px;margin-top:30px}.cv-list{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:15px}
+.cv-mini{padding:18px;border:1px solid rgba(255,255,255,.08);border-radius:16px;background:rgba(255,255,255,.03);display:flex;justify-content:space-between;gap:15px}.cv-mini-icon{width:40px;height:40px;display:grid;place-items:center;border-radius:11px;background:rgba(170,61,255,.12);color:#c66dff}
+.cv-mini-title{font-size:12px;font-weight:700}.cv-mini-meta{font-size:9px;color:#777080;margin-top:4px}.dash-actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:20px}
+.dash-btn{display:inline-flex;align-items:center;gap:7px;border:1px solid rgba(255,255,255,.09);background:rgba(255,255,255,.045);color:#ddd;padding:11px 14px;border-radius:10px;font-size:10px;font-weight:700;cursor:pointer}.dash-btn.primary{background:linear-gradient(135deg,#a53bff,#7130e9);border-color:transparent;color:#fff}
+.setting-row{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:18px 0;border-bottom:1px solid rgba(255,255,255,.07)}.setting-label{font-size:12px;font-weight:700}.setting-desc{font-size:10px;color:#777080;margin-top:4px}
+.fake-input{min-width:230px;padding:11px 13px;border-radius:10px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.035);color:#aaa;font-size:11px}
+.dashboard-empty{padding:45px 20px;text-align:center;border:1px dashed rgba(255,255,255,.1);border-radius:18px;margin-top:20px;color:#82798c;font-size:11px}
+@media(max-width:760px){.dashboard-overlay{padding:10px}.dashboard-shell{min-height:calc(100vh - 20px);border-radius:20px}.dashboard-body{grid-template-columns:1fr}.dashboard-sidebar{display:flex;overflow-x:auto;border-right:0;border-bottom:1px solid rgba(255,255,255,.07);padding:10px}.dash-nav{min-width:max-content;margin:0}.dashboard-content{padding:22px 16px}.dash-grid{grid-template-columns:1fr}.cv-list{grid-template-columns:1fr}.plan-card{align-items:flex-start;flex-direction:column}.setting-row{align-items:flex-start;flex-direction:column}.fake-input{min-width:0;width:100%}}
+
 /* MOBILE */
 
 @media(max-width:900px){
@@ -1935,6 +1963,100 @@ footer{
 </div>
 
 
+
+<!-- DASHBOARD -->
+<div id="dashboardOverlay" class="dashboard-overlay" aria-hidden="true">
+  <div class="dashboard-shell">
+    <div class="dashboard-top">
+      <div class="dashboard-top-left">
+        <span class="logo-icon"><i class="fa-solid fa-sparkles"></i></span>
+        <div><div class="dashboard-title">StudentCV AI</div><div class="dashboard-subtitle">Personal career workspace</div></div>
+      </div>
+      <button class="dashboard-close" id="dashboardClose" aria-label="Close dashboard"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+
+    <div class="dashboard-body">
+      <aside class="dashboard-sidebar">
+        <button class="dash-nav active" data-page="overview"><i class="fa-solid fa-chart-line"></i> Overview</button>
+        <button class="dash-nav" data-page="cvs"><i class="fa-regular fa-file-lines"></i> My CVs</button>
+        <button class="dash-nav" data-page="assistant"><i class="fa-solid fa-sparkles"></i> AI Assistant</button>
+        <button class="dash-nav" data-page="templates"><i class="fa-solid fa-layer-group"></i> Templates</button>
+        <button class="dash-nav" data-page="subscription"><i class="fa-regular fa-credit-card"></i> Subscription</button>
+        <button class="dash-nav" data-page="settings"><i class="fa-solid fa-sliders"></i> Settings</button>
+      </aside>
+
+      <main class="dashboard-content">
+        <section class="dash-page active" data-section="overview">
+          <h2 class="dash-heading">Welcome back, Emiljens 👋</h2>
+          <p class="dash-muted">Your career workspace is ready. Continue building your professional profile.</p>
+          <div class="dash-grid">
+            <div class="dash-card"><div class="dash-card-label">Current plan</div><div class="dash-card-value purple">PRO</div><div class="dash-card-small">€9.99 / month</div></div>
+            <div class="dash-card"><div class="dash-card-label">AI requests</div><div class="dash-card-value">23 / 100</div><div class="dash-card-small">Used this month</div></div>
+            <div class="dash-card"><div class="dash-card-label">CVs created</div><div class="dash-card-value">2</div><div class="dash-card-small">Demo workspace</div></div>
+          </div>
+          <div class="plan-card">
+            <div><span class="plan-badge">PRO PLAN</span><div class="plan-name">Advanced career mode</div><p class="dash-muted">77 AI requests remaining this month.</p><div class="progress"><span></span></div></div>
+            <button class="dash-btn primary" data-go="subscription">Manage plan <i class="fa-solid fa-arrow-right"></i></button>
+          </div>
+          <div class="dash-section-title">Recent CVs</div>
+          <div class="cv-list">
+            <div class="cv-mini"><div style="display:flex;gap:12px"><div class="cv-mini-icon"><i class="fa-regular fa-file-lines"></i></div><div><div class="cv-mini-title">Junior Python Developer</div><div class="cv-mini-meta">Updated today · Draft</div></div></div><button class="dash-btn" data-go="cvs">Open</button></div>
+            <div class="cv-mini"><div style="display:flex;gap:12px"><div class="cv-mini-icon"><i class="fa-regular fa-file-lines"></i></div><div><div class="cv-mini-title">Student CV</div><div class="cv-mini-meta">Updated 3 days ago</div></div></div><button class="dash-btn" data-go="cvs">Open</button></div>
+          </div>
+        </section>
+
+        <section class="dash-page" data-section="cvs">
+          <h2 class="dash-heading">My CVs</h2><p class="dash-muted">Manage your CV drafts and professional profiles.</p>
+          <div class="dash-actions"><button class="dash-btn primary" id="newCvBtn"><i class="fa-solid fa-plus"></i> Create new CV</button><button class="dash-btn" id="openAssistantFromCv"><i class="fa-solid fa-sparkles"></i> Build with AI</button></div>
+          <div class="cv-list">
+            <div class="cv-mini"><div style="display:flex;gap:12px"><div class="cv-mini-icon"><i class="fa-solid fa-code"></i></div><div><div class="cv-mini-title">Junior Python Developer</div><div class="cv-mini-meta">Draft · 92% profile score</div></div></div><button class="dash-btn" data-demo="edit">Edit</button></div>
+            <div class="cv-mini"><div style="display:flex;gap:12px"><div class="cv-mini-icon"><i class="fa-solid fa-graduation-cap"></i></div><div><div class="cv-mini-title">Student CV</div><div class="cv-mini-meta">Updated recently</div></div></div><button class="dash-btn" data-demo="edit">Edit</button></div>
+          </div>
+          <div class="dashboard-empty">CV editor and PDF export will be connected in the next development stage.</div>
+        </section>
+
+        <section class="dash-page" data-section="assistant">
+          <h2 class="dash-heading">AI Assistant</h2><p class="dash-muted">Open your StudentCV AI career assistant and continue working on your CV.</p>
+          <div class="dash-actions"><button class="dash-btn primary" id="openChatFromDash"><i class="fa-solid fa-robot"></i> Open AI Assistant</button></div>
+          <div class="dashboard-empty">Your Gemini-powered assistant is already connected to the website.</div>
+        </section>
+
+        <section class="dash-page" data-section="templates">
+          <h2 class="dash-heading">CV Templates</h2><p class="dash-muted">Choose a visual direction for your future CV.</p>
+          <div class="cv-list">
+            <div class="cv-mini"><div style="display:flex;gap:12px"><div class="cv-mini-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div><div><div class="cv-mini-title">Modern Minimal</div><div class="cv-mini-meta">Clean · ATS-friendly</div></div></div><button class="dash-btn" data-demo="template">Preview</button></div>
+            <div class="cv-mini"><div style="display:flex;gap:12px"><div class="cv-mini-icon"><i class="fa-solid fa-bolt"></i></div><div><div class="cv-mini-title">Tech Focus</div><div class="cv-mini-meta">Designed for IT roles</div></div></div><button class="dash-btn" data-demo="template">Preview</button></div>
+          </div>
+          <div class="dashboard-empty">Template selection is currently a demo feature.</div>
+        </section>
+
+        <section class="dash-page" data-section="subscription">
+          <h2 class="dash-heading">Subscription</h2><p class="dash-muted">Manage your current StudentCV AI plan.</p>
+          <div class="plan-card"><div><span class="plan-badge">ACTIVE</span><div class="plan-name">PRO · €9.99 / month</div><p class="dash-muted">Next billing date: Demo mode</p></div><button class="dash-btn" data-demo="billing">Billing settings</button></div>
+          <div class="dash-section-title">Available plans</div>
+          <div class="dash-grid">
+            <div class="dash-card"><div class="dash-card-label">Light</div><div class="dash-card-value">€4.99</div><div class="dash-card-small">Basic AI assistance</div><div class="dash-actions"><button class="dash-btn" data-demo="plan">Select</button></div></div>
+            <div class="dash-card"><div class="dash-card-label">PRO</div><div class="dash-card-value purple">€9.99</div><div class="dash-card-small">Advanced AI assistant</div><div class="dash-actions"><button class="dash-btn" disabled>Current plan</button></div></div>
+            <div class="dash-card"><div class="dash-card-label">ULTRA</div><div class="dash-card-value">€19.99</div><div class="dash-card-small">Unlimited AI assistance</div><div class="dash-actions"><button class="dash-btn" data-demo="plan">Upgrade</button></div></div>
+          </div>
+          <div class="dashboard-empty">Payments and real subscriptions will be connected later. No real payment is processed in demo mode.</div>
+        </section>
+
+        <section class="dash-page" data-section="settings">
+          <h2 class="dash-heading">Settings</h2><p class="dash-muted">Your demo profile preferences.</p>
+          <div class="dash-card" style="margin-top:25px">
+            <div class="setting-row"><div><div class="setting-label">Name</div><div class="setting-desc">Your display name</div></div><div class="fake-input">Emiljens Kartašovs</div></div>
+            <div class="setting-row"><div><div class="setting-label">Email</div><div class="setting-desc">Account email</div></div><div class="fake-input">emiljens@example.com</div></div>
+            <div class="setting-row"><div><div class="setting-label">Language</div><div class="setting-desc">AI response language</div></div><div class="fake-input">Auto detect</div></div>
+          </div>
+          <div class="dash-actions"><button class="dash-btn" id="demoLogout"><i class="fa-solid fa-arrow-right-from-bracket"></i> Log out</button></div>
+        </section>
+      </main>
+    </div>
+  </div>
+</div>
+
+
 <!-- AI CHAT -->
 
 <div class="ai">
@@ -2279,6 +2401,43 @@ document.addEventListener("keydown",(event)=>{
 
   }
 
+});
+
+
+/* DEMO DASHBOARD */
+const dashboardOverlay=document.getElementById("dashboardOverlay");
+const dashboardOpen=document.getElementById("dashboardOpen");
+const dashboardClose=document.getElementById("dashboardClose");
+
+function openDashboard(){dashboardOverlay.classList.add("open");dashboardOverlay.setAttribute("aria-hidden","false");document.body.style.overflow="hidden"}
+function closeDashboard(){dashboardOverlay.classList.remove("open");dashboardOverlay.setAttribute("aria-hidden","true");document.body.style.overflow=""}
+dashboardOpen?.addEventListener("click",openDashboard);
+dashboardClose?.addEventListener("click",closeDashboard);
+dashboardOverlay?.addEventListener("click",e=>{if(e.target===dashboardOverlay)closeDashboard()});
+
+document.addEventListener("keydown",e=>{
+  if(e.key==="Escape" && dashboardOverlay.classList.contains("open"))closeDashboard();
+});
+
+function goDashboardPage(page){
+  document.querySelectorAll(".dash-nav").forEach(x=>x.classList.toggle("active",x.dataset.page===page));
+  document.querySelectorAll(".dash-page").forEach(x=>x.classList.toggle("active",x.dataset.section===page));
+}
+document.querySelectorAll(".dash-nav").forEach(btn=>btn.addEventListener("click",()=>goDashboardPage(btn.dataset.page)));
+document.querySelectorAll("[data-go]").forEach(btn=>btn.addEventListener("click",()=>goDashboardPage(btn.dataset.go)));
+
+document.getElementById("openChatFromDash")?.addEventListener("click",()=>{
+  closeDashboard();setTimeout(()=>chatToggle.click(),180);
+});
+document.getElementById("openAssistantFromCv")?.addEventListener("click",()=>goDashboardPage("assistant"));
+document.getElementById("newCvBtn")?.addEventListener("click",()=>{
+  goDashboardPage("assistant");setTimeout(()=>chatToggle.click(),150);
+});
+document.querySelectorAll("[data-demo]").forEach(btn=>btn.addEventListener("click",()=>{
+  alert("This feature is currently in demo mode. Real functionality will be connected in the next development stage.");
+}));
+document.getElementById("demoLogout")?.addEventListener("click",()=>{
+  closeDashboard();alert("Demo logout completed. Real authentication will be connected later.");
 });
 
 </script>
