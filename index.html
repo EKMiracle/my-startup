@@ -3,12 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#08060d">
+<meta name="theme-color" content="#08050d">
 
-<title>StudentCV AI</title>
+<title>StudentCV AI — Your Career, Professionally Decoded</title>
+
+<meta name="description" content="StudentCV AI helps students turn their education, skills and experience into a professional CV.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <link rel="stylesheet"
@@ -16,27 +19,20 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 
 <style>
 
-/* =========================
-   ROOT
-========================= */
-
 :root{
-  --bg:#07050b;
-  --bg2:#0e0914;
-  --purple:#a855f7;
-  --violet:#7c3aed;
-  --pink:#d946ef;
-  --white:#fff;
-  --text:#e8e2ef;
-  --muted:#8f879c;
-  --line:rgba(255,255,255,.09);
-  --gradient:linear-gradient(135deg,#7c3aed,#a855f7 45%,#d946ef);
+  --bg:#08050d;
+  --bg2:#0d0715;
+  --card:rgba(255,255,255,.045);
+  --card2:rgba(255,255,255,.065);
+  --border:rgba(255,255,255,.09);
+  --text:#f7f4fb;
+  --muted:#a8a0b3;
+  --purple:#9d4edd;
+  --purple2:#c44cff;
+  --pink:#ff4fd8;
+  --green:#75f5c0;
+  --shadow:0 25px 90px rgba(0,0,0,.45);
 }
-
-
-/* =========================
-   RESET
-========================= */
 
 *{
   box-sizing:border-box;
@@ -45,39 +41,28 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 }
 
 html{
-  width:100%;
-  overflow-x:hidden;
   scroll-behavior:smooth;
+  overflow-x:hidden;
 }
 
 body{
-  width:100%;
-  max-width:100%;
-  overflow-x:hidden;
-
-  font-family:"DM Sans",Arial,sans-serif;
-  color:var(--text);
-
   background:
-    radial-gradient(circle at 15% 5%,rgba(124,58,237,.22),transparent 25%),
-    radial-gradient(circle at 85% 15%,rgba(217,70,239,.12),transparent 25%),
-    radial-gradient(circle at 50% 60%,rgba(99,102,241,.08),transparent 30%),
+    radial-gradient(circle at 80% 10%,rgba(139,45,255,.15),transparent 25%),
+    radial-gradient(circle at 10% 45%,rgba(198,65,255,.08),transparent 25%),
     var(--bg);
+  color:var(--text);
+  font-family:"DM Sans",sans-serif;
+  overflow-x:hidden;
 }
 
 body:before{
   content:"";
   position:fixed;
   inset:0;
-  z-index:-1;
   pointer-events:none;
-
-  background-image:
-    linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
-
-  background-size:70px 70px;
-  opacity:.35;
+  opacity:.025;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.4'/%3E%3C/svg%3E");
+  z-index:9999;
 }
 
 a{
@@ -85,60 +70,65 @@ a{
   text-decoration:none;
 }
 
-::selection{
-  background:#a855f7;
-  color:#fff;
+button,
+input,
+textarea{
+  font:inherit;
 }
 
+.container{
+  width:min(1180px,calc(100% - 40px));
+  margin:auto;
+}
 
-/* =========================
-   NAVIGATION
-========================= */
+/* NAV */
 
 nav{
   position:fixed;
-  top:18px;
+  top:16px;
   left:50%;
   transform:translateX(-50%);
-  z-index:100;
-
   width:min(1100px,calc(100% - 30px));
-  height:64px;
-
+  height:62px;
+  padding:0 18px;
   display:flex;
   align-items:center;
   justify-content:space-between;
+  z-index:1000;
 
-  padding:0 20px;
-
-  border:1px solid var(--line);
-  border-radius:18px;
-
-  background:rgba(8,6,13,.75);
+  background:rgba(11,7,17,.72);
+  border:1px solid rgba(255,255,255,.09);
   backdrop-filter:blur(22px);
-
-  box-shadow:0 20px 60px rgba(0,0,0,.25);
+  border-radius:18px;
+  box-shadow:0 15px 50px rgba(0,0,0,.3);
 }
 
 .logo{
   display:flex;
   align-items:center;
   gap:9px;
-
-  font-family:"Space Grotesk";
+  font-family:"Space Grotesk",sans-serif;
   font-weight:700;
+  font-size:17px;
 }
 
-.logo i{
-  color:var(--purple);
-  filter:drop-shadow(0 0 8px var(--purple));
+.logo-icon{
+  width:27px;
+  height:27px;
+  display:grid;
+  place-items:center;
+  border-radius:8px;
+  background:linear-gradient(135deg,var(--purple2),#6f2cff);
+  box-shadow:0 0 25px rgba(180,65,255,.45);
+  font-size:12px;
 }
 
 .nav-links{
   display:flex;
-  gap:26px;
-  color:#aaa1b2;
-  font-size:13px;
+  align-items:center;
+  gap:28px;
+  color:#aaa2b3;
+  font-size:12px;
 }
 
 .nav-links a{
@@ -150,1278 +140,921 @@ nav{
 }
 
 .nav-button{
-  padding:9px 15px;
-
-  border-radius:10px;
-
   background:#fff;
-  color:#0b0710;
-
-  font-size:12px;
+  color:#100a16;
+  padding:10px 16px;
+  border-radius:10px;
+  font-size:11px;
   font-weight:700;
-
-  transition:.3s;
 }
 
-.nav-button:hover{
-  transform:translateY(-2px);
-}
-
-
-/* =========================
-   HERO
-========================= */
+/* HERO */
 
 .hero{
-  width:100%;
-  max-width:1250px;
   min-height:900px;
-
-  margin:auto;
-  padding:170px 25px 100px;
-
+  padding:190px 0 90px;
+  position:relative;
   display:grid;
-  grid-template-columns:1.05fr .95fr;
-
+  grid-template-columns:1fr 1fr;
   align-items:center;
-  gap:60px;
-
-  position:relative;
-}
-
-.hero-content{
-  min-width:0;
-  position:relative;
-  z-index:2;
+  gap:40px;
 }
 
 .aurora{
   position:absolute;
-
   width:600px;
   height:600px;
-
   border-radius:50%;
-
   filter:blur(100px);
-  opacity:.15;
-
+  opacity:.16;
   pointer-events:none;
 }
 
 .aurora.one{
-  background:#7c3aed;
-  top:50px;
-  left:-250px;
+  background:#9d24ff;
+  top:-250px;
+  left:-300px;
 }
 
 .aurora.two{
-  background:#d946ef;
-  right:-250px;
-  bottom:100px;
+  background:#ff32cf;
+  right:-300px;
+  top:100px;
 }
 
 .eyebrow{
   display:inline-flex;
   align-items:center;
-  gap:9px;
-
-  padding:8px 13px;
-
-  border:1px solid rgba(168,85,247,.35);
+  gap:7px;
+  padding:7px 12px;
+  border:1px solid rgba(187,74,255,.28);
   border-radius:100px;
-
-  background:rgba(168,85,247,.08);
-
-  color:#cda5ff;
-  font-size:12px;
-  font-weight:600;
+  background:rgba(155,55,255,.07);
+  color:#d6a4ff;
+  font-size:11px;
 }
 
-.eyebrow span{
-  width:7px;
-  height:7px;
-
-  border-radius:50%;
-
-  background:#c084fc;
-  box-shadow:0 0 12px #c084fc;
+.eyebrow i{
+  font-size:9px;
 }
 
 h1{
-  max-width:850px;
-
-  margin:28px 0;
-
-  font-family:"Space Grotesk";
-  font-size:clamp(55px,6.5vw,91px);
-  line-height:.96;
-
+  margin:25px 0;
+  max-width:700px;
+  font-family:"Space Grotesk",sans-serif;
+  font-size:clamp(58px,7vw,88px);
+  line-height:.94;
   letter-spacing:-5px;
 }
 
-.gradient-text{
-  display:block;
-
-  background:
-    linear-gradient(
-      100deg,
-      #fff,
-      #c084fc,
-      #e879f9,
-      #a855f7
-    );
-
-  background-clip:text;
+.gradient{
+  background:linear-gradient(
+    100deg,
+    #fff 5%,
+    #d9b5ff 38%,
+    #b33cff 70%,
+    #ff64df
+  );
   -webkit-background-clip:text;
-
   color:transparent;
 }
 
 .hero-description{
-  max-width:620px;
-
-  color:#91889c;
-
-  font-size:17px;
-  line-height:1.8;
+  max-width:550px;
+  color:var(--muted);
+  font-size:15px;
+  line-height:1.75;
 }
 
 .hero-actions{
   display:flex;
   gap:12px;
-
-  margin-top:35px;
-
-  flex-wrap:wrap;
+  margin-top:30px;
 }
 
 .btn{
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  gap:10px;
-
-  padding:15px 21px;
-
+  gap:9px;
+  padding:14px 20px;
   border-radius:12px;
-
-  font-size:13px;
+  border:1px solid var(--border);
+  font-size:12px;
   font-weight:700;
-
   transition:.3s;
+  cursor:pointer;
 }
 
-.primary{
-  background:var(--gradient);
-
-  box-shadow:
-    0 10px 35px rgba(168,85,247,.25);
-}
-
-.primary:hover{
-  transform:translateY(-4px);
-
-  box-shadow:
-    0 18px 45px rgba(168,85,247,.38);
-}
-
-.secondary{
-  border:1px solid var(--line);
-  background:#ffffff05;
-  color:#b8b0c1;
-}
-
-.secondary:hover{
-  border-color:#a855f755;
+.btn.primary{
   color:#fff;
+  background:linear-gradient(135deg,#a537ff,#7d31e9);
+  box-shadow:0 10px 35px rgba(160,45,255,.25);
 }
 
-.hero-note{
-  margin-top:18px;
-
-  color:#62596b;
-
-  font-size:11px;
+.btn.primary:hover{
+  transform:translateY(-2px);
+  box-shadow:0 15px 45px rgba(160,45,255,.4);
 }
 
-.hero-note i{
-  color:#8b5cf6;
+.btn.secondary{
+  background:rgba(255,255,255,.035);
 }
 
+.btn.secondary:hover{
+  background:rgba(255,255,255,.08);
+}
 
-/* =========================
-   CV VISUAL
-========================= */
+/* CV VISUAL */
 
 .visual{
-  width:100%;
-  height:570px;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
+  height:540px;
   position:relative;
-
-  min-width:0;
+  display:grid;
+  place-items:center;
 }
 
 .orbit{
   position:absolute;
-
-  width:460px;
-  height:460px;
-
-  border:1px solid rgba(168,85,247,.14);
-
+  width:470px;
+  height:470px;
+  border:1px solid rgba(189,73,255,.18);
   border-radius:50%;
+  animation:spin 20s linear infinite;
 }
 
 .orbit:before,
 .orbit:after{
   content:"";
-
   position:absolute;
-
-  width:8px;
-  height:8px;
-
+  width:7px;
+  height:7px;
   border-radius:50%;
-
-  background:#c084fc;
-  box-shadow:0 0 20px #a855f7;
+  background:#ce4cff;
+  box-shadow:0 0 20px #ce4cff;
 }
 
 .orbit:before{
-  top:30px;
-  left:50%;
+  top:20%;
+  left:-3px;
 }
 
 .orbit:after{
-  right:20px;
-  bottom:70px;
+  right:10%;
+  bottom:12%;
+}
+
+@keyframes spin{
+  to{transform:rotate(360deg)}
 }
 
 .cv-card{
-  width:350px;
-  min-height:455px;
-
-  padding:25px;
-
-  border:1px solid rgba(255,255,255,.13);
-  border-radius:22px;
-
-  background:
-    linear-gradient(145deg,rgba(255,255,255,.09),rgba(255,255,255,.025)),
-    #0e0a14;
-
-  box-shadow:
-    0 40px 100px rgba(0,0,0,.55),
-    0 0 70px rgba(168,85,247,.13);
-
-  transform:rotate(4deg);
-
   position:relative;
-  z-index:3;
+  width:365px;
+  min-height:455px;
+  padding:28px;
+  transform:rotate(5deg);
+  border-radius:20px;
+  border:1px solid rgba(255,255,255,.13);
+  background:
+    linear-gradient(145deg,rgba(255,255,255,.08),rgba(255,255,255,.025));
+  backdrop-filter:blur(25px);
+  box-shadow:
+    0 35px 90px rgba(0,0,0,.5),
+    inset 0 1px rgba(255,255,255,.08);
+  z-index:2;
 }
 
 .cv-top{
   display:flex;
-  justify-content:space-between;
+  gap:14px;
   align-items:center;
-
-  margin-bottom:25px;
-}
-
-.cv-profile{
-  display:flex;
-  align-items:center;
-  gap:12px;
 }
 
 .avatar{
-  width:42px;
-  height:42px;
-
+  width:52px;
+  height:52px;
+  border-radius:15px;
+  background:linear-gradient(135deg,#d946ef,#7c3aed);
   display:grid;
   place-items:center;
-
-  border-radius:12px;
-
-  background:var(--gradient);
+  font-size:18px;
 }
 
 .cv-name{
-  font-family:"Space Grotesk";
   font-weight:700;
-  font-size:13px;
 }
 
 .cv-role{
-  color:#746c7d;
-  font-size:9px;
-}
-
-.ai-tag{
-  padding:5px 8px;
-
-  border-radius:7px;
-
-  background:#a855f715;
-  border:1px solid #a855f72c;
-
-  color:#c084fc;
-
-  font-size:8px;
-}
-
-.cv-section{
-  margin-top:28px;
-}
-
-.cv-title{
-  margin-bottom:10px;
-
-  color:#a855f7;
-
-  font-size:8px;
-  letter-spacing:1.5px;
-  text-transform:uppercase;
+  color:#908799;
+  font-size:10px;
+  margin-top:3px;
 }
 
 .cv-line{
   height:7px;
-
-  margin:10px 0;
-
   border-radius:10px;
-
-  background:#ffffff0b;
-}
-
-.cv-line.big{
-  width:85%;
-  height:12px;
-  background:#ffffff16;
-}
-
-.cv-line.mid{
-  width:65%;
+  background:rgba(255,255,255,.08);
+  margin-top:9px;
 }
 
 .cv-line.short{
-  width:40%;
+  width:55%;
 }
 
-.skills{
-  display:flex;
-  gap:6px;
-  flex-wrap:wrap;
+.cv-line.medium{
+  width:75%;
 }
 
-.skill{
-  padding:5px 8px;
+.cv-section{
+  margin-top:30px;
+}
 
-  border-radius:6px;
-
-  background:#ffffff08;
-  border:1px solid #ffffff0b;
-
-  color:#91899a;
-
+.cv-section-title{
+  color:#be65ff;
+  text-transform:uppercase;
+  letter-spacing:2px;
   font-size:8px;
+  font-weight:700;
 }
 
 .score{
   position:absolute;
-
-  right:-55px;
-  top:100px;
-
-  width:130px;
-
-  padding:13px;
-
-  border:1px solid #a855f733;
-  border-radius:14px;
-
-  background:rgba(15,10,21,.92);
-
-  box-shadow:0 15px 40px #0006;
+  right:-60px;
+  top:90px;
+  width:120px;
+  padding:16px;
+  border-radius:16px;
+  background:rgba(16,10,24,.82);
+  border:1px solid rgba(255,255,255,.1);
+  backdrop-filter:blur(20px);
+  box-shadow:var(--shadow);
 }
 
-.score small{
-  display:block;
-
-  color:#766d80;
-  font-size:8px;
+.score-label{
+  color:#8f8598;
+  font-size:9px;
 }
 
 .score strong{
   display:block;
-
-  color:#d8b4fe;
-  font-size:22px;
+  margin-top:5px;
+  font-size:25px;
+  color:#fff;
 }
 
 .score-bar{
   height:4px;
-
-  margin-top:7px;
-
+  margin-top:9px;
+  background:rgba(255,255,255,.08);
   border-radius:10px;
-
-  background:#21162c;
+  overflow:hidden;
 }
 
 .score-bar span{
   display:block;
-
   width:92%;
   height:100%;
-
-  border-radius:inherit;
-
-  background:var(--gradient);
+  background:linear-gradient(90deg,#8b5cf6,#ec4899);
 }
 
-
-/* =========================
-   MARQUEE
-========================= */
+/* MARQUEE */
 
 .marquee{
-  width:100%;
-
   overflow:hidden;
-
-  border-top:1px solid var(--line);
-  border-bottom:1px solid var(--line);
-
-  background:#ffffff03;
-
-  padding:16px 0;
-
+  border-top:1px solid rgba(255,255,255,.06);
+  border-bottom:1px solid rgba(255,255,255,.06);
+  padding:17px 0;
   white-space:nowrap;
 }
 
 .marquee-track{
   display:inline-flex;
-  gap:35px;
-
-  color:#655d6d;
-
-  font-family:"Space Grotesk";
-  font-size:11px;
-
-  letter-spacing:1px;
+  gap:50px;
+  animation:marquee 25s linear infinite;
+  color:#716a79;
+  font-size:10px;
   text-transform:uppercase;
+  letter-spacing:2px;
 }
 
-.marquee i{
-  color:#a855f7;
+.marquee-dot{
+  color:#bd4aff;
 }
 
+@keyframes marquee{
+  from{transform:translateX(0)}
+  to{transform:translateX(-50%)}
+}
 
-/* =========================
-   SECTIONS
-========================= */
+/* SECTIONS */
 
 section{
-  width:100%;
-  max-width:1150px;
-
-  margin:auto;
-  padding:120px 25px;
+  padding:120px 0;
 }
 
-.section-label{
-  margin-bottom:15px;
-
-  color:#a855f7;
-
+.section-kicker{
+  color:#bd65ff;
+  text-transform:uppercase;
+  letter-spacing:3px;
   font-size:10px;
   font-weight:700;
-
-  letter-spacing:2px;
-  text-transform:uppercase;
+  margin-bottom:16px;
 }
 
 .section-title{
-  max-width:750px;
-
-  font-family:"Space Grotesk";
-
-  font-size:clamp(38px,5vw,65px);
+  max-width:700px;
+  font-family:"Space Grotesk",sans-serif;
+  font-size:clamp(40px,5vw,66px);
   line-height:1;
-
   letter-spacing:-3px;
 }
 
-.section-description{
-  max-width:580px;
-
-  margin-top:20px;
-
-  color:#807789;
-
-  line-height:1.8;
+.section-sub{
+  margin-top:18px;
+  color:var(--muted);
+  max-width:590px;
+  line-height:1.7;
+  font-size:14px;
 }
 
-
-/* =========================
-   FEATURES
-========================= */
+/* FEATURES */
 
 .feature-grid{
   display:grid;
-  grid-template-columns:1.2fr .8fr .8fr;
-
-  gap:15px;
-
+  grid-template-columns:1fr 1fr;
+  gap:14px;
   margin-top:55px;
 }
 
 .feature{
-  min-height:280px;
-
-  padding:30px;
-
+  min-height:270px;
+  padding:32px;
+  border:1px solid var(--border);
+  border-radius:22px;
+  background:var(--card);
   position:relative;
   overflow:hidden;
-
-  border:1px solid var(--line);
-  border-radius:22px;
-
-  background:#ffffff03;
-
-  transition:.4s;
-}
-
-.feature.large{
-  min-height:350px;
+  transition:.35s;
 }
 
 .feature:hover{
-  transform:translateY(-7px);
+  transform:translateY(-4px);
+  background:var(--card2);
+  border-color:rgba(194,72,255,.25);
+}
 
-  border-color:#a855f744;
-
-  box-shadow:0 25px 60px #0005;
+.feature.large{
+  grid-column:span 2;
+  min-height:330px;
 }
 
 .feature-icon{
-  width:48px;
-  height:48px;
-
+  width:45px;
+  height:45px;
   display:grid;
   place-items:center;
-
-  margin-bottom:30px;
-
-  border-radius:13px;
-
-  background:#a855f712;
-  border:1px solid #a855f725;
-
-  color:#c084fc;
+  border-radius:14px;
+  background:rgba(164,61,255,.12);
+  color:#ce72ff;
+  border:1px solid rgba(192,72,255,.15);
 }
 
 .feature h3{
-  margin-bottom:10px;
-
-  font-family:"Space Grotesk";
-  font-size:20px;
+  margin-top:65px;
+  font-family:"Space Grotesk",sans-serif;
+  font-size:27px;
 }
 
 .feature p{
-  color:#7e7687;
-
+  color:#928a99;
+  margin-top:10px;
+  max-width:520px;
   font-size:13px;
-  line-height:1.8;
+  line-height:1.7;
 }
 
-.feature-number{
-  position:absolute;
-
-  right:25px;
-  top:20px;
-
-  color:#ffffff08;
-
-  font-family:"Space Grotesk";
-  font-size:70px;
-  font-weight:700;
-}
-
-
-/* =========================
-   TRANSFORM
-========================= */
+/* TRANSFORM */
 
 .transform{
   display:grid;
-
-  grid-template-columns:.8fr 1.2fr;
-
-  gap:80px;
-
+  grid-template-columns:1fr 1fr;
+  gap:70px;
   align-items:center;
 }
 
 .transform-visual{
-  width:100%;
-  min-height:440px;
-
-  position:relative;
-
-  display:grid;
-  place-items:center;
-
-  overflow:hidden;
-
-  border:1px solid var(--line);
-  border-radius:25px;
-
+  min-height:460px;
+  border:1px solid var(--border);
+  border-radius:28px;
+  padding:28px;
   background:
-    radial-gradient(circle at 50% 50%,#a855f71c,transparent 45%),
-    #ffffff03;
+    radial-gradient(circle at 50% 20%,rgba(170,60,255,.15),transparent 35%),
+    rgba(255,255,255,.025);
+  position:relative;
+  overflow:hidden;
 }
 
-.transform-circle{
-  width:210px;
-  height:210px;
-
-  display:grid;
-  place-items:center;
-
-  border:1px solid #a855f744;
-  border-radius:50%;
-
-  background:#a855f708;
-
-  box-shadow:
-    0 0 80px #a855f722,
-    inset 0 0 50px #a855f711;
-}
-
-.transform-circle i{
-  color:#c084fc;
-
-  font-size:65px;
-
-  filter:drop-shadow(0 0 20px #a855f7);
-}
-
-.float-chip{
+.document{
   position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%) rotate(-4deg);
+  width:280px;
+  padding:25px;
+  border-radius:17px;
+  background:#15101c;
+  border:1px solid rgba(255,255,255,.1);
+  box-shadow:0 30px 70px rgba(0,0,0,.55);
+}
 
-  padding:10px 13px;
+.document-tag{
+  color:#bd63ff;
+  font-size:9px;
+  text-transform:uppercase;
+  letter-spacing:2px;
+}
 
-  border:1px solid var(--line);
-  border-radius:10px;
+.document h3{
+  margin:18px 0;
+  font-family:"Space Grotesk";
+}
 
-  background:#100b17dd;
+.document-line{
+  height:8px;
+  background:#292230;
+  border-radius:20px;
+  margin:10px 0;
+}
 
-  color:#aaa1b3;
+.document-line:nth-child(4){
+  width:70%;
+}
 
+.ai-badge{
+  position:absolute;
+  right:35px;
+  top:35px;
+  padding:10px 14px;
+  border-radius:12px;
+  background:rgba(159,57,255,.15);
+  border:1px solid rgba(190,77,255,.3);
+  color:#d17cff;
   font-size:10px;
 }
 
-.chip1{
-  top:60px;
-  left:35px;
-}
-
-.chip2{
-  top:100px;
-  right:30px;
-}
-
-.chip3{
-  bottom:90px;
-  left:60px;
-}
-
-.chip4{
-  right:45px;
-  bottom:55px;
-}
-
-.transform-list{
-  display:grid;
-  gap:13px;
-
-  margin-top:35px;
-}
-
-.transform-item{
-  display:flex;
-  align-items:center;
-  gap:14px;
-
-  color:#a9a0b1;
-
-  font-size:13px;
-}
-
-.transform-item i{
-  width:28px;
-  height:28px;
-
-  display:grid;
-  place-items:center;
-
-  flex-shrink:0;
-
-  border-radius:8px;
-
-  background:#a855f714;
-
-  color:#c084fc;
-
-  font-size:11px;
-}
-
-
-/* =========================
-   PRICING
-========================= */
-
-.pricing-head{
-  text-align:center;
-
-  margin-bottom:55px;
-}
-
-.pricing-head .section-title{
-  margin:auto;
-}
-
-.pricing-head .section-description{
-  margin-left:auto;
-  margin-right:auto;
-}
+/* PRICING */
 
 .plans{
+  margin-top:55px;
   display:grid;
-
   grid-template-columns:repeat(3,1fr);
-
-  gap:15px;
+  gap:14px;
 }
 
 .plan{
   padding:32px;
-
-  position:relative;
-
-  border:1px solid var(--line);
+  border:1px solid var(--border);
   border-radius:22px;
-
-  background:#ffffff03;
-
-  transition:.4s;
+  background:var(--card);
+  position:relative;
 }
 
-.plan:hover{
-  transform:translateY(-7px);
-  border-color:#a855f744;
-}
-
-.plan.pro{
-  border-color:#a855f755;
-
+.plan.popular{
+  border-color:rgba(192,69,255,.45);
   background:
-    linear-gradient(145deg,#a855f70b,#ffffff03);
-
-  box-shadow:0 0 80px #a855f70d;
+    radial-gradient(circle at 50% 0,rgba(177,57,255,.12),transparent 45%),
+    var(--card);
 }
 
-.popular{
+.popular-label{
   position:absolute;
-
-  top:-11px;
-  right:20px;
-
-  padding:4px 10px;
-
-  border-radius:20px;
-
-  background:var(--gradient);
-
+  right:18px;
+  top:18px;
+  padding:6px 9px;
+  border-radius:8px;
+  background:#a238ff;
+  color:#fff;
   font-size:8px;
   font-weight:700;
 }
 
 .plan h3{
   font-family:"Space Grotesk";
-  font-size:18px;
+  font-size:20px;
 }
 
 .price{
-  margin:20px 0 28px;
-
+  margin:25px 0;
   font-family:"Space Grotesk";
   font-size:42px;
   font-weight:700;
 }
 
-.price small{
-  color:#756d7c;
-
+.price span{
+  font-size:12px;
+  color:#777080;
   font-family:"DM Sans";
-  font-size:11px;
-  font-weight:400;
 }
 
 .plan ul{
-  display:grid;
-  gap:12px;
-
-  margin-bottom:30px;
-
   list-style:none;
-}
-
-.plan li{
-  color:#81798a;
+  color:#99919f;
   font-size:12px;
+  line-height:2.4;
+  margin-bottom:25px;
 }
 
 .plan li i{
+  color:#bc5cff;
   margin-right:8px;
-  color:#a855f7;
 }
 
-.plan-button{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  gap:8px;
-
-  padding:13px;
-
-  border:1px solid var(--line);
-  border-radius:10px;
-
-  color:#aaa2b3;
-
-  font-size:12px;
-  font-weight:700;
-}
-
-.pro .plan-button{
-  background:var(--gradient);
-  color:#fff;
-  border:0;
-}
-
-
-/* =========================
-   CTA
-========================= */
+/* CTA */
 
 .cta{
-  width:calc(100% - 30px);
-  max-width:1100px;
-
-  margin:60px auto 120px;
-  padding:90px 30px;
-
-  position:relative;
-  overflow:hidden;
-
   text-align:center;
-
-  border:1px solid #a855f72c;
+  padding:110px 30px;
+  border:1px solid rgba(186,67,255,.16);
   border-radius:30px;
-
   background:
-    radial-gradient(circle at 50% 100%,#a855f71c,transparent 50%),
-    linear-gradient(135deg,#ffffff05,#a855f706);
+    radial-gradient(circle at 50% 0,rgba(181,58,255,.14),transparent 45%),
+    rgba(255,255,255,.025);
 }
 
 .cta h2{
-  position:relative;
-  z-index:2;
-
   font-family:"Space Grotesk";
-  font-size:clamp(38px,5vw,65px);
-
-  line-height:1;
+  font-size:clamp(40px,5vw,65px);
   letter-spacing:-3px;
 }
 
 .cta p{
+  color:#938a9c;
+  margin:18px auto 30px;
   max-width:500px;
-
-  margin:20px auto 30px;
-
-  position:relative;
-  z-index:2;
-
-  color:#817789;
+  line-height:1.7;
+  font-size:14px;
 }
 
+/* CONTACT */
 
-/* =========================
-   CONTACT
-========================= */
-
-.contact{
-  text-align:center;
+.contact-box{
+  margin-top:45px;
+  padding:35px;
+  border-radius:22px;
+  border:1px solid var(--border);
+  background:var(--card);
 }
 
-.contact .section-title{
-  margin:auto;
+.contact-box p{
+  color:#958c9d;
+  line-height:1.8;
+  font-size:13px;
 }
 
-.contact .section-description{
-  margin:20px auto;
-}
-
-.email{
+.contact-email{
   display:inline-block;
-
   margin-top:20px;
-
-  color:#c084fc;
-
-  font-family:"Space Grotesk";
-  font-size:18px;
+  color:#ce7aff;
 }
 
-
-/* =========================
-   LEGAL
-========================= */
-
-.legal{
-  padding-top:60px;
-  padding-bottom:70px;
-}
-
-.legal-title{
-  margin-bottom:25px;
-
-  text-align:center;
-
-  font-family:"Space Grotesk";
-  font-size:28px;
-}
+/* LEGAL */
 
 .legal-grid{
   display:grid;
-
-  grid-template-columns:repeat(4,1fr);
-
+  grid-template-columns:repeat(3,1fr);
   gap:10px;
+  margin-top:40px;
 }
 
-.legal-grid a{
-  display:flex;
-  align-items:center;
-  gap:10px;
-
-  padding:16px;
-
-  border:1px solid var(--line);
-  border-radius:12px;
-
-  background:#ffffff03;
-
-  color:#82798c;
-
-  font-size:11px;
-
-  transition:.3s;
-}
-
-.legal-grid a span{
-  flex:1;
-}
-
-.legal-grid a i:first-child{
-  color:#a855f7;
-}
-
-.legal-grid a:hover{
-  border-color:#a855f733;
-  color:#d2cad8;
-}
-
-.legal-doc{
-  display:none;
-
-  width:calc(100% - 30px);
-  max-width:850px;
-
-  margin:50px auto;
-
-  padding:45px;
-
-  border:1px solid var(--line);
-  border-radius:22px;
-
-  background:#0e0913;
-}
-
-.legal-doc:target{
-  display:block;
-}
-
-.legal-doc h2{
-  margin-bottom:25px;
-
-  font-family:"Space Grotesk";
-  font-size:35px;
-}
-
-.legal-doc h3{
-  margin:25px 0 7px;
-}
-
-.legal-doc p{
-  color:#817889;
-  line-height:1.8;
-}
-
-.back{
-  display:inline-flex;
-
-  margin-top:30px;
-
-  padding:10px 15px;
-
-  border-radius:9px;
-
-  background:#ffffff08;
-
-  color:#c084fc;
-}
-
-
-/* =========================
-   AI CHAT
-========================= */
-
-.ai{
-  position:fixed;
-
-  right:22px;
-  bottom:22px;
-
-  z-index:200;
-}
-
-.chat-toggle{
-  width:58px;
-  height:58px;
-
-  display:grid;
-  place-items:center;
-
-  border:1px solid #ffffff33;
-  border-radius:50%;
-
-  background:var(--gradient);
-
-  color:#fff;
-
-  cursor:pointer;
-
-  font-size:20px;
-
-  box-shadow:
-    0 10px 35px #0008,
-    0 0 30px #a855f744;
-}
-
-.chat-toggle::-webkit-details-marker{
-  display:none;
-}
-
-.chat-window{
-  position:absolute;
-
-  right:0;
-  bottom:72px;
-
-  width:330px;
-  max-width:calc(100vw - 30px);
-
-  overflow:hidden;
-
-  border:1px solid #a855f733;
-  border-radius:18px;
-
-  background:#0e0913f2;
-
-  box-shadow:0 30px 90px #000b;
-}
-
-.chat-head{
-  padding:17px;
-
-  background:linear-gradient(135deg,#321052,#171020);
-}
-
-.chat-head strong{
-  font-family:"Space Grotesk";
-}
-
-.chat-head small{
-  color:#85798f;
-}
-
-.chat-body{
-  padding:15px;
-}
-
-.chat-body p{
-  padding:12px;
-
-  margin-bottom:10px;
-
-  border-radius:10px;
-
-  background:#ffffff06;
-
-  color:#aaa1b0;
-
+.legal-card{
+  padding:22px;
+  border-radius:16px;
+  border:1px solid var(--border);
+  background:var(--card);
+  color:#aaa2b1;
   font-size:12px;
 }
 
-.chat-body a{
-  display:flex;
-  align-items:center;
-  gap:9px;
+.legal-card:hover{
+  color:#fff;
+  border-color:rgba(185,70,255,.25);
+}
 
-  padding:10px;
-  margin:6px 0;
+/* FOOTER */
 
-  border-radius:9px;
-
-  background:#ffffff05;
-
-  color:#a9a0b1;
-
+footer{
+  padding:45px 0;
+  border-top:1px solid rgba(255,255,255,.06);
+  color:#686170;
   font-size:11px;
 }
 
-.chat-body a i{
-  width:20px;
-  color:#a855f7;
+.footer-inner{
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
 }
 
-.chat-footer{
-  padding:10px;
-
-  border-top:1px solid var(--line);
-
-  text-align:center;
-
-  color:#5f5667;
-
-  font-size:9px;
-}
-
-
-/* =========================
-   SOCIAL
-========================= */
+/* SOCIAL */
 
 .social{
   position:fixed;
-
-  left:22px;
-  bottom:22px;
-
-  z-index:100;
-
+  left:20px;
+  bottom:20px;
+  z-index:900;
   display:flex;
   gap:7px;
 }
 
 .social a{
-  width:36px;
-  height:36px;
-
+  width:34px;
+  height:34px;
   display:grid;
   place-items:center;
-
-  border:1px solid var(--line);
-  border-radius:9px;
-
-  background:#0c0811dd;
-
-  color:#777080;
-
+  border-radius:10px;
+  background:rgba(13,9,18,.8);
+  border:1px solid rgba(255,255,255,.08);
+  color:#93899d;
   font-size:12px;
+  backdrop-filter:blur(15px);
+  transition:.25s;
 }
 
 .social a:hover{
-  color:#c084fc;
-  border-color:#a855f744;
+  color:#fff;
+  border-color:rgba(190,70,255,.35);
 }
 
+/* AI BUTTON */
 
-/* =========================
-   FOOTER
-========================= */
+.ai{
+  position:fixed;
+  right:22px;
+  bottom:20px;
+  z-index:1100;
+}
 
-footer{
-  padding:35px 20px;
+.chat-toggle{
+  width:58px;
+  height:58px;
+  border:none;
+  border-radius:18px;
+  cursor:pointer;
+  color:#fff;
+  background:linear-gradient(135deg,#c43cff,#792cff);
+  box-shadow:
+    0 12px 35px rgba(159,48,255,.4),
+    0 0 0 1px rgba(255,255,255,.1);
+  font-size:18px;
+  transition:.3s;
+}
 
-  border-top:1px solid var(--line);
+.chat-toggle:hover{
+  transform:translateY(-3px) scale(1.03);
+}
 
+.chat-toggle.active{
+  border-radius:50%;
+}
+
+/* CHAT */
+
+.chat-window{
+  position:absolute;
+  right:0;
+  bottom:72px;
+  width:380px;
+  height:550px;
+
+  display:none;
+  flex-direction:column;
+
+  border:1px solid rgba(255,255,255,.11);
+  border-radius:23px;
+  background:
+    radial-gradient(circle at 80% 0,rgba(169,54,255,.13),transparent 35%),
+    rgba(12,8,18,.94);
+  backdrop-filter:blur(25px);
+  box-shadow:0 30px 100px rgba(0,0,0,.65);
+  overflow:hidden;
+}
+
+.chat-window.open{
+  display:flex;
+  animation:chatIn .25s ease;
+}
+
+@keyframes chatIn{
+  from{
+    opacity:0;
+    transform:translateY(12px) scale(.98);
+  }
+  to{
+    opacity:1;
+    transform:none;
+  }
+}
+
+.chat-header{
+  padding:18px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  border-bottom:1px solid rgba(255,255,255,.07);
+}
+
+.chat-brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.chat-avatar{
+  width:38px;
+  height:38px;
+  display:grid;
+  place-items:center;
+  border-radius:12px;
+  background:linear-gradient(135deg,#b73fff,#7130ff);
+  box-shadow:0 0 25px rgba(174,57,255,.3);
+}
+
+.chat-title{
+  font-weight:700;
+  font-size:13px;
+}
+
+.chat-status{
+  color:#76e9b5;
+  font-size:9px;
+  margin-top:3px;
+}
+
+.chat-close{
+  width:30px;
+  height:30px;
+  border:0;
+  background:rgba(255,255,255,.05);
+  color:#999;
+  border-radius:9px;
+  cursor:pointer;
+}
+
+.chat-messages{
+  flex:1;
+  padding:18px;
+  overflow-y:auto;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+.chat-messages::-webkit-scrollbar{
+  width:4px;
+}
+
+.chat-messages::-webkit-scrollbar-thumb{
+  background:#392441;
+  border-radius:10px;
+}
+
+.message{
+  max-width:86%;
+  padding:12px 14px;
+  border-radius:15px;
+  font-size:12px;
+  line-height:1.6;
+  white-space:pre-wrap;
+}
+
+.message.ai-message{
+  align-self:flex-start;
+  background:rgba(255,255,255,.055);
+  border:1px solid rgba(255,255,255,.07);
+  color:#ddd6e2;
+  border-bottom-left-radius:5px;
+}
+
+.message.user-message{
+  align-self:flex-end;
+  background:linear-gradient(135deg,#9638ed,#7131d7);
+  color:#fff;
+  border-bottom-right-radius:5px;
+}
+
+.typing{
+  display:flex;
+  align-items:center;
+  gap:4px;
+}
+
+.typing span{
+  width:5px;
+  height:5px;
+  border-radius:50%;
+  background:#c268ff;
+  animation:typing 1s infinite;
+}
+
+.typing span:nth-child(2){
+  animation-delay:.15s;
+}
+
+.typing span:nth-child(3){
+  animation-delay:.3s;
+}
+
+@keyframes typing{
+  0%,60%,100%{opacity:.3;transform:translateY(0)}
+  30%{opacity:1;transform:translateY(-3px)}
+}
+
+.chat-input-area{
+  padding:12px;
+  border-top:1px solid rgba(255,255,255,.07);
+}
+
+.chat-input-wrap{
+  display:flex;
+  gap:7px;
+  padding:6px;
+  border-radius:14px;
+  background:rgba(255,255,255,.045);
+  border:1px solid rgba(255,255,255,.07);
+}
+
+.chat-input{
+  min-width:0;
+  flex:1;
+  border:none;
+  outline:none;
+  background:transparent;
+  color:#fff;
+  padding:9px;
+  font-size:12px;
+}
+
+.chat-input::placeholder{
+  color:#6e6675;
+}
+
+.send-button{
+  width:38px;
+  height:38px;
+  border:none;
+  border-radius:10px;
+  cursor:pointer;
+  color:#fff;
+  background:linear-gradient(135deg,#a53bff,#7230e9);
+}
+
+.send-button:disabled{
+  opacity:.45;
+  cursor:not-allowed;
+}
+
+.chat-note{
+  color:#5e5764;
   text-align:center;
-
-  color:#514a59;
-
-  font-size:10px;
+  font-size:8px;
+  margin-top:8px;
 }
 
+/* LEGAL DOCUMENT */
 
-/* ========================================================
-   TABLET
-======================================================== */
+.legal-doc{
+  margin-top:25px;
+  padding:30px;
+  border-radius:20px;
+  background:rgba(255,255,255,.025);
+  border:1px solid var(--border);
+}
+
+.legal-doc h3{
+  font-family:"Space Grotesk";
+  margin-bottom:14px;
+}
+
+.legal-doc p{
+  color:#938a99;
+  line-height:1.8;
+  font-size:12px;
+  margin-bottom:14px;
+}
+
+/* MOBILE */
 
 @media(max-width:900px){
 
   .hero{
     grid-template-columns:1fr;
-
     min-height:auto;
-
     padding-top:150px;
-
-    text-align:center;
-  }
-
-  .hero-description{
-    margin-left:auto;
-    margin-right:auto;
-  }
-
-  .hero-actions{
-    justify-content:center;
   }
 
   .visual{
-    height:500px;
-
-    margin-top:20px;
-  }
-
-  .feature-grid{
-    grid-template-columns:1fr 1fr;
-  }
-
-  .feature.large{
-    grid-column:span 2;
+    margin-top:30px;
   }
 
   .transform{
@@ -1430,22 +1063,9 @@ footer{
 
   .plans{
     grid-template-columns:1fr;
-
-    max-width:500px;
-
-    margin-left:auto;
-    margin-right:auto;
   }
 
-  .legal-grid{
-    grid-template-columns:1fr 1fr;
-  }
 }
-
-
-/* ========================================================
-   MOBILE
-======================================================== */
 
 @media(max-width:600px){
 
@@ -1456,17 +1076,16 @@ footer{
     overflow-x:hidden;
   }
 
+  .container{
+    width:calc(100% - 30px);
+  }
+
   nav{
     width:calc(100% - 20px);
-
     left:10px;
     transform:none;
-
     height:58px;
-
     padding:0 14px;
-
-    border-radius:15px;
   }
 
   .nav-links{
@@ -1474,67 +1093,42 @@ footer{
   }
 
   .logo{
-    font-size:16px;
+    font-size:14px;
   }
 
   .nav-button{
-    padding:8px 12px;
-
-    font-size:10px;
+    font-size:9px;
+    padding:8px 11px;
   }
-
-
-  /* HERO */
 
   .hero{
     width:100%;
-    max-width:100%;
-
-    padding:125px 18px 60px;
-
+    padding:125px 18px 65px;
     display:block;
-
     overflow:hidden;
-  }
-
-  .eyebrow{
-    max-width:100%;
-
-    font-size:10px;
-
-    padding:7px 10px;
   }
 
   h1{
     width:100%;
     max-width:100%;
-
-    margin:23px auto;
-
+    margin:23px 0;
     font-size:clamp(43px,13vw,58px);
-
     line-height:.98;
-
     letter-spacing:-3px;
   }
 
   .hero-description{
     width:100%;
     max-width:100%;
-
     font-size:14px;
-
     line-height:1.7;
   }
 
   .hero-actions{
     width:100%;
-
     display:flex;
     flex-direction:column;
-
     gap:10px;
-
     margin-top:28px;
   }
 
@@ -1542,19 +1136,10 @@ footer{
     width:100%;
   }
 
-  .hero-note{
-    font-size:9px;
-  }
-
-
-  /* CV */
-
   .visual{
     width:100%;
     height:380px;
-
-    margin:10px auto 0;
-
+    margin:15px auto 0;
     overflow:hidden;
   }
 
@@ -1566,34 +1151,14 @@ footer{
   .cv-card{
     width:275px;
     min-height:355px;
-
     padding:19px;
-
     transform:rotate(2deg);
-  }
-
-  .cv-top{
-    margin-bottom:18px;
-  }
-
-  .cv-name{
-    font-size:11px;
-  }
-
-  .cv-role{
-    font-size:8px;
-  }
-
-  .cv-section{
-    margin-top:20px;
   }
 
   .score{
     right:0;
     top:45px;
-
     width:100px;
-
     padding:10px;
   }
 
@@ -1601,70 +1166,40 @@ footer{
     font-size:18px;
   }
 
-  .score small{
-    font-size:7px;
-  }
-
-
-  /* SECTIONS */
-
   section{
     width:100%;
     max-width:100%;
-
     padding:75px 18px;
-
     overflow:hidden;
   }
 
   .section-title{
     width:100%;
     max-width:100%;
-
     font-size:40px;
-
     letter-spacing:-2px;
   }
 
-  .section-description{
-    width:100%;
-    max-width:100%;
-
-    font-size:13px;
-  }
-
-
-  /* FEATURES */
-
   .feature-grid{
     grid-template-columns:1fr;
-
     gap:12px;
-
     margin-top:35px;
   }
 
   .feature,
   .feature.large{
     grid-column:auto;
-
     min-height:auto;
-
     padding:25px;
   }
 
-  .feature-number{
-    font-size:55px;
+  .feature h3{
+    margin-top:45px;
   }
-
-
-  /* TRANSFORM */
 
   .transform{
     display:flex;
-
     flex-direction:column;
-
     gap:35px;
   }
 
@@ -1673,119 +1208,26 @@ footer{
     min-height:320px;
   }
 
-  .transform-circle{
-    width:160px;
-    height:160px;
-  }
-
-  .transform-circle i{
-    font-size:50px;
-  }
-
-  .float-chip{
-    font-size:8px;
-
-    padding:8px 10px;
-  }
-
-  .chip1{
-    left:15px;
-    top:40px;
-  }
-
-  .chip2{
-    right:15px;
-    top:65px;
-  }
-
-  .chip3{
-    left:25px;
-    bottom:45px;
-  }
-
-  .chip4{
-    right:20px;
-    bottom:30px;
-  }
-
-
-  /* PRICING */
-
-  .pricing-head{
-    margin-bottom:35px;
+  .document{
+    width:240px;
   }
 
   .plans{
     width:100%;
     max-width:100%;
-
     grid-template-columns:1fr;
-  }
-
-  .plan{
-    width:100%;
-
-    padding:27px;
-  }
-
-  .price{
-    font-size:38px;
-  }
-
-
-  /* CTA */
-
-  .cta{
-    width:calc(100% - 30px);
-
-    margin:20px 15px 70px;
-
-    padding:65px 18px;
-
-    border-radius:25px;
-  }
-
-  .cta h2{
-    font-size:40px;
-
-    letter-spacing:-2px;
-  }
-
-  .cta p{
-    font-size:13px;
-  }
-
-
-  /* LEGAL */
-
-  .legal{
-    padding-top:40px;
   }
 
   .legal-grid{
     grid-template-columns:1fr;
-
     gap:8px;
   }
 
-  .legal-grid a{
-    width:100%;
-  }
-
   .legal-doc{
-    width:calc(100% - 30px);
-
-    margin:30px 15px;
-
-    padding:28px 22px;
+    width:100%;
+    margin-top:20px;
+    padding:24px 20px;
   }
-
-  .legal-doc h2{
-    font-size:30px;
-  }
-
-
-  /* CHAT */
 
   .ai{
     right:15px;
@@ -1799,71 +1241,37 @@ footer{
 
   .chat-window{
     position:fixed;
-
     left:15px;
     right:15px;
-
     bottom:82px;
-
     width:auto;
+    height:min(550px,calc(100vh - 110px));
     max-width:none;
-
-    max-height:calc(100vh - 110px);
-
-    overflow-y:auto;
   }
-
-
-  /* SOCIAL */
 
   .social{
     left:15px;
     bottom:15px;
   }
 
-  .social a{
-    width:34px;
-    height:34px;
-  }
-
-
-  /* DECORATION */
-
-  .aurora{
-    opacity:.08;
-  }
-
-  .float-chip{
-    white-space:nowrap;
+  .footer-inner{
+    flex-direction:column;
   }
 }
-
-
-/* ========================================================
-   VERY SMALL PHONES
-======================================================== */
 
 @media(max-width:360px){
 
   nav{
     width:calc(100% - 14px);
-
     left:7px;
   }
 
   .logo{
-    font-size:14px;
-  }
-
-  .nav-button{
-    font-size:9px;
-
-    padding:7px 9px;
+    font-size:13px;
   }
 
   h1{
     font-size:42px;
-
     letter-spacing:-2.5px;
   }
 
@@ -1874,7 +1282,6 @@ footer{
   .cv-card{
     width:245px;
     min-height:325px;
-
     padding:16px;
   }
 
@@ -1885,7 +1292,6 @@ footer{
 
   .score{
     width:88px;
-
     right:0;
   }
 
@@ -1906,22 +1312,22 @@ footer{
 </style>
 </head>
 
-
 <body>
-
 
 <!-- NAV -->
 
 <nav>
 
   <a href="#" class="logo">
-    <i class="fa-solid fa-robot"></i>
+    <span class="logo-icon">
+      <i class="fa-solid fa-sparkles"></i>
+    </span>
     StudentCV AI
   </a>
 
   <div class="nav-links">
     <a href="#features">Features</a>
-    <a href="#transform">How it works</a>
+    <a href="#how">How it works</a>
     <a href="#pricing">Pricing</a>
     <a href="#contact">Contact</a>
   </div>
@@ -1935,52 +1341,46 @@ footer{
 
 <!-- HERO -->
 
-<header class="hero">
+<main>
+
+<section class="hero">
 
   <div class="aurora one"></div>
   <div class="aurora two"></div>
 
-  <div class="hero-content">
+  <div class="container">
 
     <div class="eyebrow">
-      <span></span>
+      <i class="fa-solid fa-wand-magic-sparkles"></i>
       AI-powered career intelligence
     </div>
 
     <h1>
-      Your story.
-      <span class="gradient-text">
-        Professionally decoded.
-      </span>
+      Your story.<br>
+      <span class="gradient">Professionally</span><br>
+      decoded.
     </h1>
 
     <p class="hero-description">
       StudentCV AI turns scattered experiences, skills and ambitions
-      into a profile designed to make sense to recruiters.
+      into a professional profile designed to make you visible to recruiters.
     </p>
 
     <div class="hero-actions">
 
       <a href="#pricing" class="btn primary">
         Build my CV
-        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+        <i class="fa-solid fa-arrow-right"></i>
       </a>
 
-      <a href="#features" class="btn secondary">
+      <a href="#how" class="btn secondary">
         Explore the system
       </a>
 
     </div>
 
-    <div class="hero-note">
-      <i class="fa-solid fa-circle-check"></i>
-      Built for students, graduates & first-job seekers
-    </div>
-
   </div>
 
-
-  <!-- CV PREVIEW -->
 
   <div class="visual">
 
@@ -1990,105 +1390,72 @@ footer{
 
       <div class="cv-top">
 
-        <div class="cv-profile">
-
-          <div class="avatar">
-            <i class="fa-solid fa-user"></i>
-          </div>
-
-          <div>
-            <div class="cv-name">
-              Alex Morgan
-            </div>
-
-            <div class="cv-role">
-              Computer Science Student
-            </div>
-          </div>
-
+        <div class="avatar">
+          <i class="fa-solid fa-user"></i>
         </div>
 
-        <div class="ai-tag">
-          AI OPTIMIZED
+        <div>
+          <div class="cv-name">Alex Morgan</div>
+          <div class="cv-role">Computer Science Student</div>
         </div>
 
       </div>
 
+      <div class="cv-line medium"></div>
+      <div class="cv-line short"></div>
 
       <div class="cv-section">
 
-        <div class="cv-title">
-          Profile
-        </div>
-
-        <div class="cv-line big"></div>
-        <div class="cv-line"></div>
-        <div class="cv-line mid"></div>
-
-      </div>
-
-
-      <div class="cv-section">
-
-        <div class="cv-title">
+        <div class="cv-section-title">
           Experience
         </div>
 
-        <div class="cv-line big"></div>
-        <div class="cv-line"></div>
+        <div class="cv-line medium"></div>
         <div class="cv-line short"></div>
 
       </div>
 
-
       <div class="cv-section">
 
-        <div class="cv-title">
+        <div class="cv-section-title">
           Skills
         </div>
 
-        <div class="skills">
-
-          <span class="skill">Python</span>
-          <span class="skill">UI/UX</span>
-          <span class="skill">Leadership</span>
-          <span class="skill">Marketing</span>
-          <span class="skill">English</span>
-
-        </div>
-
-      </div>
-
-
-      <div class="cv-section">
-
-        <div class="cv-title">
-          Education
-        </div>
-
-        <div class="cv-line big"></div>
+        <div class="cv-line medium"></div>
         <div class="cv-line short"></div>
 
       </div>
 
-    </div>
+      <div class="cv-section">
 
+        <div class="cv-section-title">
+          Education
+        </div>
 
-    <div class="score">
+        <div class="cv-line medium"></div>
+        <div class="cv-line short"></div>
 
-      <small>PROFILE SCORE</small>
+      </div>
 
-      <strong>92%</strong>
+      <div class="score">
 
-      <div class="score-bar">
-        <span></span>
+        <div class="score-label">
+          Profile score
+        </div>
+
+        <strong>92%</strong>
+
+        <div class="score-bar">
+          <span></span>
+        </div>
+
       </div>
 
     </div>
 
   </div>
 
-</header>
+</section>
 
 
 <!-- MARQUEE -->
@@ -2097,20 +1464,28 @@ footer{
 
   <div class="marquee-track">
 
-    <span>AI CAREER INTELLIGENCE</span>
-    <i class="fa-solid fa-asterisk"></i>
+    <span>AI CAREER ASSISTANT</span>
+    <span class="marquee-dot">✦</span>
 
-    <span>SMART CV STRUCTURE</span>
-    <i class="fa-solid fa-asterisk"></i>
+    <span>STUDENT CV</span>
+    <span class="marquee-dot">✦</span>
 
-    <span>HR-READY PROFILES</span>
-    <i class="fa-solid fa-asterisk"></i>
+    <span>RECRUITER READY</span>
+    <span class="marquee-dot">✦</span>
 
-    <span>SKILL OPTIMIZATION</span>
-    <i class="fa-solid fa-asterisk"></i>
+    <span>ATS FRIENDLY</span>
+    <span class="marquee-dot">✦</span>
 
-    <span>INTERVIEW PREPARATION</span>
-    <i class="fa-solid fa-asterisk"></i>
+    <span>AI CAREER ASSISTANT</span>
+    <span class="marquee-dot">✦</span>
+
+    <span>STUDENT CV</span>
+    <span class="marquee-dot">✦</span>
+
+    <span>RECRUITER READY</span>
+    <span class="marquee-dot">✦</span>
+
+    <span>ATS FRIENDLY</span>
 
   </div>
 
@@ -2121,164 +1496,140 @@ footer{
 
 <section id="features">
 
-  <div class="section-label">
-    01 / THE SYSTEM
-  </div>
+  <div class="container">
 
-  <h2 class="section-title">
-    Not another CV builder.
-    A career translation layer.
-  </h2>
+    <div class="section-kicker">
+      The system
+    </div>
 
-  <p class="section-description">
-    Most students know what they have done.
-    The difficult part is explaining why it matters.
-    StudentCV AI bridges that gap.
-  </p>
+    <h2 class="section-title">
+      More than a CV generator.
+    </h2>
 
-
-  <div class="feature-grid">
+    <p class="section-sub">
+      StudentCV AI helps students understand how to present their
+      potential — not just format a document.
+    </p>
 
 
-    <article class="feature large">
+    <div class="feature-grid">
 
-      <div class="feature-number">
-        01
+      <div class="feature large">
+
+        <div class="feature-icon">
+          <i class="fa-solid fa-brain"></i>
+        </div>
+
+        <h3>
+          Career Intelligence
+        </h3>
+
+        <p>
+          Turn education, projects, skills and ambitions into
+          clear professional positioning with AI-powered guidance.
+        </p>
+
       </div>
 
-      <div class="feature-icon">
-        <i class="fa-solid fa-wand-magic-sparkles"></i>
+
+      <div class="feature">
+
+        <div class="feature-icon">
+          <i class="fa-regular fa-file-lines"></i>
+        </div>
+
+        <h3>
+          Professional CV
+        </h3>
+
+        <p>
+          Transform basic student information into structured,
+          professional and recruiter-friendly CV content.
+        </p>
+
       </div>
 
-      <h3>
-        AI Career Intelligence
-      </h3>
 
-      <p>
-        Turn ordinary descriptions into clear professional
-        language that communicates your actual value.
-      </p>
+      <div class="feature">
 
-    </article>
+        <div class="feature-icon">
+          <i class="fa-solid fa-user-tie"></i>
+        </div>
 
+        <h3>
+          Recruiter Perspective
+        </h3>
 
-    <article class="feature">
+        <p>
+          Understand how your profile can be presented more clearly
+          to recruiters and applicant tracking systems.
+        </p>
 
-      <div class="feature-number">
-        02
       </div>
 
-      <div class="feature-icon">
-        <i class="fa-solid fa-file-lines"></i>
-      </div>
-
-      <h3>
-        Structured CV
-      </h3>
-
-      <p>
-        Education, projects, experience and skills
-        organized into one coherent story.
-      </p>
-
-    </article>
-
-
-    <article class="feature">
-
-      <div class="feature-number">
-        03
-      </div>
-
-      <div class="feature-icon">
-        <i class="fa-solid fa-user-tie"></i>
-      </div>
-
-      <h3>
-        Recruiter Perspective
-      </h3>
-
-      <p>
-        Highlight the information that helps recruiters
-        understand you faster.
-      </p>
-
-    </article>
+    </div>
 
   </div>
 
 </section>
 
 
-<!-- TRANSFORM -->
+<!-- HOW -->
 
-<section id="transform">
+<section id="how">
 
-  <div class="transform">
+  <div class="container">
 
-    <div class="transform-visual">
+    <div class="transform">
 
-      <div class="transform-circle">
-        <i class="fa-solid fa-brain"></i>
-      </div>
+      <div>
 
-      <div class="float-chip chip1">
-        messy experience
-      </div>
-
-      <div class="float-chip chip2">
-        → structured profile
-      </div>
-
-      <div class="float-chip chip3">
-        skills
-      </div>
-
-      <div class="float-chip chip4">
-        achievements
-      </div>
-
-    </div>
-
-
-    <div>
-
-      <div class="section-label">
-        02 / THE TRANSFORMATION
-      </div>
-
-      <h2 class="section-title">
-        You bring the story.
-        We sharpen the signal.
-      </h2>
-
-      <p class="section-description">
-        StudentCV AI doesn't invent your career.
-        It helps you understand and communicate the value
-        already hidden inside your experience.
-      </p>
-
-
-      <div class="transform-list">
-
-        <div class="transform-item">
-          <i class="fa-solid fa-check"></i>
-          Turn casual descriptions into professional statements
+        <div class="section-kicker">
+          From messy to meaningful
         </div>
 
-        <div class="transform-item">
-          <i class="fa-solid fa-check"></i>
-          Identify skills hidden inside your experience
+        <h2 class="section-title">
+          Your experience already has value.
+        </h2>
+
+        <p class="section-sub">
+          You don't need ten years of experience to create a strong
+          professional profile. StudentCV AI helps translate projects,
+          education and skills into language employers understand.
+        </p>
+
+        <br>
+
+        <a href="#pricing" class="btn primary">
+          Start building
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+
+      </div>
+
+
+      <div class="transform-visual">
+
+        <div class="ai-badge">
+          <i class="fa-solid fa-sparkles"></i>
+          AI enhanced
         </div>
 
-        <div class="transform-item">
-          <i class="fa-solid fa-check"></i>
-          Build a recruiter-friendly personal profile
-        </div>
+        <div class="document">
 
-        <div class="transform-item">
-          <i class="fa-solid fa-check"></i>
-          Prepare stronger answers for interviews
+          <div class="document-tag">
+            Student profile
+          </div>
+
+          <h3>
+            Computer Science Student
+          </h3>
+
+          <div class="document-line"></div>
+          <div class="document-line"></div>
+          <div class="document-line"></div>
+          <div class="document-line"></div>
+
         </div>
 
       </div>
@@ -2294,149 +1645,97 @@ footer{
 
 <section id="pricing">
 
-  <div class="pricing-head">
+  <div class="container">
 
-    <div class="section-label">
-      03 / MEMBERSHIP
+    <div class="section-kicker">
+      Simple pricing
     </div>
 
     <h2 class="section-title">
-      Choose your level.
+      Choose your career mode.
     </h2>
 
-    <p class="section-description">
-      Start simple. Upgrade when your ambitions get bigger.
+    <p class="section-sub">
+      Start simple. Upgrade when you need more AI power.
     </p>
 
-  </div>
 
+    <div class="plans">
 
-  <div class="plans">
+      <div class="plan">
 
+        <h3>Light</h3>
 
-    <article class="plan">
+        <div class="price">
+          €4.99
+          <span>/ month</span>
+        </div>
 
-      <h3>Light</h3>
+        <ul>
+          <li><i class="fa-solid fa-check"></i> AI CV assistance</li>
+          <li><i class="fa-solid fa-check"></i> CV improvements</li>
+          <li><i class="fa-solid fa-check"></i> Student templates</li>
+          <li><i class="fa-solid fa-check"></i> Basic career guidance</li>
+        </ul>
 
-      <div class="price">
-        €4.99
-        <small>/ month</small>
+        <a href="#" class="btn secondary">
+          Choose Light
+        </a>
+
       </div>
 
-      <ul>
 
-        <li>
-          <i class="fa-solid fa-check"></i>
-          Basic AI assistance
-        </li>
+      <div class="plan popular">
 
-        <li>
-          <i class="fa-solid fa-check"></i>
-          CV structure
-        </li>
+        <div class="popular-label">
+          MOST POPULAR
+        </div>
 
-        <li>
-          <i class="fa-solid fa-check"></i>
-          Basic recommendations
-        </li>
+        <h3>PRO</h3>
 
-      </ul>
+        <div class="price">
+          €9.99
+          <span>/ month</span>
+        </div>
 
-      <a href="#" class="plan-button">
-        Choose Light
-      </a>
+        <ul>
+          <li><i class="fa-solid fa-check"></i> Everything in Light</li>
+          <li><i class="fa-solid fa-check"></i> Advanced AI assistant</li>
+          <li><i class="fa-solid fa-check"></i> Recruiter analysis</li>
+          <li><i class="fa-solid fa-check"></i> Cover letters</li>
+          <li><i class="fa-solid fa-check"></i> Interview preparation</li>
+        </ul>
 
-    </article>
+        <a href="#" class="btn primary">
+          Choose PRO
+        </a>
 
-
-    <article class="plan pro">
-
-      <span class="popular">
-        MOST POPULAR
-      </span>
-
-      <h3>PRO</h3>
-
-      <div class="price">
-        €9.99
-        <small>/ month</small>
       </div>
 
-      <ul>
 
-        <li>
-          <i class="fa-solid fa-check"></i>
-          Advanced AI assistance
-        </li>
+      <div class="plan">
 
-        <li>
-          <i class="fa-solid fa-check"></i>
-          Professional CV
-        </li>
+        <h3>ULTRA</h3>
 
-        <li>
-          <i class="fa-solid fa-check"></i>
-          HR recommendations
-        </li>
+        <div class="price">
+          €19.99
+          <span>/ month</span>
+        </div>
 
-        <li>
-          <i class="fa-solid fa-check"></i>
-          Personal presentation
-        </li>
+        <ul>
+          <li><i class="fa-solid fa-check"></i> Everything in PRO</li>
+          <li><i class="fa-solid fa-check"></i> Advanced career strategy</li>
+          <li><i class="fa-solid fa-check"></i> LinkedIn optimization</li>
+          <li><i class="fa-solid fa-check"></i> Unlimited AI assistance</li>
+        </ul>
 
-      </ul>
+        <a href="#" class="btn secondary">
+          Choose ULTRA
+        </a>
 
-      <a href="#" class="plan-button">
-        Choose PRO
-        <i class="fa-solid fa-arrow-right"></i>
-      </a>
-
-    </article>
-
-
-    <article class="plan">
-
-      <h3>ULTRA</h3>
-
-      <div class="price">
-        €19.99
-        <small>/ month</small>
       </div>
 
-      <ul>
-
-        <li>
-          <i class="fa-solid fa-check"></i>
-          Unlimited AI assistance
-        </li>
-
-        <li>
-          <i class="fa-solid fa-check"></i>
-          Advanced CV optimization
-        </li>
-
-        <li>
-          <i class="fa-solid fa-check"></i>
-          HR-focused analysis
-        </li>
-
-        <li>
-          <i class="fa-solid fa-check"></i>
-          Interview preparation
-        </li>
-
-        <li>
-          <i class="fa-solid fa-check"></i>
-          Priority support
-        </li>
-
-      </ul>
-
-      <a href="#" class="plan-button">
-        Choose ULTRA
-      </a>
-
-    </article>
+    </div>
 
   </div>
 
@@ -2445,308 +1744,544 @@ footer{
 
 <!-- CTA -->
 
-<div class="cta">
+<section>
 
-  <div class="section-label">
-    YOUR NEXT VERSION
+  <div class="container">
+
+    <div class="cta">
+
+      <div class="section-kicker">
+        Your next opportunity
+      </div>
+
+      <h2>
+        Make your story<br>
+        impossible to ignore.
+      </h2>
+
+      <p>
+        Build a profile that shows what you can actually bring
+        to the table.
+      </p>
+
+      <a href="#pricing" class="btn primary">
+        Build my CV
+        <i class="fa-solid fa-arrow-right"></i>
+      </a>
+
+    </div>
+
   </div>
 
-  <h2>
-    Your CV is not
-    <span class="gradient-text">
-      the final product.
-    </span>
-  </h2>
-
-  <p>
-    It's the beginning of the story you want recruiters to remember.
-  </p>
-
-  <a href="#pricing" class="btn primary">
-    Start building
-    <i class="fa-solid fa-arrow-right"></i>
-  </a>
-
-</div>
+</section>
 
 
 <!-- CONTACT -->
 
-<section id="contact" class="contact">
+<section id="contact">
 
-  <div class="section-label">
-    04 / CONTACT
+  <div class="container">
+
+    <div class="section-kicker">
+      Contact
+    </div>
+
+    <h2 class="section-title">
+      Let's build the future of student careers.
+    </h2>
+
+    <div class="contact-box">
+
+      <p>
+        Have a question, partnership idea or feedback?
+        Get in touch with the StudentCV AI team.
+      </p>
+
+      <a href="mailto:hello@studentcv.ai" class="contact-email">
+        hello@studentcv.ai
+      </a>
+
+    </div>
+
   </div>
-
-  <h2 class="section-title">
-    Have something to say?
-  </h2>
-
-  <p class="section-description">
-    Questions, partnerships or feedback —
-    we're listening.
-  </p>
-
-  <a class="email" href="mailto:info@studentcv.ai">
-    info@studentcv.ai
-  </a>
 
 </section>
 
 
 <!-- LEGAL -->
 
-<section class="legal">
+<section>
 
-  <div class="legal-title">
-    Legal & Policies
-  </div>
+  <div class="container">
 
-  <div class="legal-grid">
+    <div class="section-kicker">
+      Legal
+    </div>
 
-    <a href="#terms-and-conditions">
-      <i class="fa-solid fa-scale-balanced"></i>
-      <span>Terms & Conditions</span>
-      <i class="fa-solid fa-arrow-right"></i>
-    </a>
+    <h2 class="section-title">
+      Policies & information.
+    </h2>
 
-    <a href="#privacy-policy">
-      <i class="fa-solid fa-shield-halved"></i>
-      <span>Privacy Policy</span>
-      <i class="fa-solid fa-arrow-right"></i>
-    </a>
+    <div class="legal-grid">
 
-    <a href="#subscription-policy">
-      <i class="fa-solid fa-credit-card"></i>
-      <span>Subscription Policy</span>
-      <i class="fa-solid fa-arrow-right"></i>
-    </a>
+      <a href="#terms" class="legal-card">
+        Terms & Conditions
+      </a>
 
-    <a href="#terms-of-use">
-      <i class="fa-solid fa-file-contract"></i>
-      <span>Terms of Use</span>
-      <i class="fa-solid fa-arrow-right"></i>
-    </a>
+      <a href="#privacy" class="legal-card">
+        Privacy Policy
+      </a>
+
+      <a href="#cookies" class="legal-card">
+        Cookie Policy
+      </a>
+
+    </div>
+
+
+    <div id="terms" class="legal-doc">
+
+      <h3>
+        Terms & Conditions
+      </h3>
+
+      <p>
+        StudentCV AI provides AI-powered career and CV assistance.
+        Users are responsible for the accuracy of information they provide.
+      </p>
+
+      <p>
+        AI-generated content should be reviewed by the user before
+        being used in professional applications.
+      </p>
+
+    </div>
+
+
+    <div id="privacy" class="legal-doc">
+
+      <h3>
+        Privacy Policy
+      </h3>
+
+      <p>
+        StudentCV AI may process information submitted by users
+        for the purpose of providing its services.
+      </p>
+
+      <p>
+        We aim to minimize unnecessary data collection and protect
+        user information using appropriate technical measures.
+      </p>
+
+    </div>
+
+
+    <div id="cookies" class="legal-doc">
+
+      <h3>
+        Cookie Policy
+      </h3>
+
+      <p>
+        StudentCV AI may use cookies or similar technologies
+        required for functionality, analytics or authentication.
+      </p>
+
+    </div>
 
   </div>
 
 </section>
 
-
-<!-- LEGAL PAGES -->
-
-<article class="legal-doc" id="terms-and-conditions">
-
-  <h2>Terms & Conditions</h2>
-
-  <h3>General</h3>
-
-  <p>
-    These Terms & Conditions govern the use of StudentCV AI
-    and its services.
-  </p>
-
-  <h3>User Responsibility</h3>
-
-  <p>
-    Users are responsible for the information they provide
-    to StudentCV AI.
-  </p>
-
-  <h3>AI-generated Content</h3>
-
-  <p>
-    Users should review AI-generated content before using it
-    for applications or communication with employers.
-  </p>
-
-  <a class="back" href="#">
-    ← Back
-  </a>
-
-</article>
+</main>
 
 
-<article class="legal-doc" id="privacy-policy">
+<!-- FOOTER -->
 
-  <h2>Privacy Policy</h2>
+<footer>
 
-  <h3>Information We Collect</h3>
+  <div class="container footer-inner">
 
-  <p>
-    StudentCV AI may process information provided by users
-    while using the platform.
-  </p>
-
-  <h3>Use of Information</h3>
-
-  <p>
-    Information may be used to provide AI assistance,
-    improve the service and communicate with users.
-  </p>
-
-  <h3>Data Protection</h3>
-
-  <p>
-    StudentCV AI aims to protect user information and encourages
-    users not to provide unnecessary sensitive information.
-  </p>
-
-  <a class="back" href="#">
-    ← Back
-  </a>
-
-</article>
-
-
-<article class="legal-doc" id="subscription-policy">
-
-  <h2>Subscription Policy</h2>
-
-  <h3>Subscription Plans</h3>
-
-  <p>
-    StudentCV AI provides Light, PRO and ULTRA subscription plans.
-  </p>
-
-  <h3>Pricing</h3>
-
-  <p>
-    Current prices are displayed on the StudentCV AI website in euros.
-  </p>
-
-  <h3>Cancellation</h3>
-
-  <p>
-    Users should review applicable cancellation and renewal
-    conditions before purchasing a subscription.
-  </p>
-
-  <a class="back" href="#">
-    ← Back
-  </a>
-
-</article>
-
-
-<article class="legal-doc" id="terms-of-use">
-
-  <h2>Terms of Use</h2>
-
-  <h3>Acceptable Use</h3>
-
-  <p>
-    StudentCV AI should be used for legitimate educational
-    and career-development purposes.
-  </p>
-
-  <h3>Prohibited Activities</h3>
-
-  <p>
-    Users must not use the service for illegal activities,
-    fraud or impersonation.
-  </p>
-
-  <h3>Service Information</h3>
-
-  <p>
-    AI suggestions are assistance and do not guarantee
-    employment or interviews.
-  </p>
-
-  <a class="back" href="#">
-    ← Back
-  </a>
-
-</article>
-
-
-<!-- AI ASSISTANT -->
-
-<details class="ai">
-
-  <summary class="chat-toggle">
-    <i class="fa-solid fa-robot"></i>
-  </summary>
-
-  <div class="chat-window">
-
-    <div class="chat-head">
-
-      <strong>
-        <i class="fa-solid fa-robot"></i>
-        StudentCV AI
-      </strong>
-
-      <br>
-
-      <small>
-        AI career assistant
-      </small>
-
+    <div>
+      © 2026 StudentCV AI. All rights reserved.
     </div>
 
-    <div class="chat-body">
-
-      <p>
-        👋 Hey. What are we building today?
-      </p>
-
-      <a href="#features">
-        <i class="fa-solid fa-file-lines"></i>
-        Improve my CV
-      </a>
-
-      <a href="#pricing">
-        <i class="fa-solid fa-credit-card"></i>
-        Explore plans
-      </a>
-
-      <a href="#transform">
-        <i class="fa-solid fa-brain"></i>
-        How does the AI work?
-      </a>
-
-      <a href="#contact">
-        <i class="fa-solid fa-envelope"></i>
-        Contact support
-      </a>
-
-    </div>
-
-    <div class="chat-footer">
-      StudentCV AI • Career intelligence
+    <div>
+      AI-powered career intelligence.
     </div>
 
   </div>
 
-</details>
+</footer>
 
 
 <!-- SOCIAL -->
 
 <div class="social">
 
-  <a href="https://www.instagram.com/" target="_blank">
+  <a href="#" aria-label="Instagram">
     <i class="fa-brands fa-instagram"></i>
   </a>
 
-  <a href="https://www.linkedin.com/" target="_blank">
+  <a href="#" aria-label="LinkedIn">
     <i class="fa-brands fa-linkedin-in"></i>
   </a>
 
-  <a href="https://www.facebook.com/" target="_blank">
+  <a href="#" aria-label="Facebook">
     <i class="fa-brands fa-facebook-f"></i>
   </a>
 
 </div>
 
 
-<!-- FOOTER -->
+<!-- AI CHAT -->
 
-<footer>
-  © 2026 StudentCV AI — Turn your story into opportunity.
-</footer>
+<div class="ai">
+
+  <div id="chatWindow" class="chat-window">
+
+    <div class="chat-header">
+
+      <div class="chat-brand">
+
+        <div class="chat-avatar">
+          <i class="fa-solid fa-sparkles"></i>
+        </div>
+
+        <div>
+
+          <div class="chat-title">
+            StudentCV AI
+          </div>
+
+          <div class="chat-status">
+            ● AI Career Assistant
+          </div>
+
+        </div>
+
+      </div>
+
+      <button
+        class="chat-close"
+        id="chatClose"
+        aria-label="Close chat">
+
+        <i class="fa-solid fa-xmark"></i>
+
+      </button>
+
+    </div>
+
+
+    <div id="chatMessages" class="chat-messages">
+
+      <div class="message ai-message">
+
+        Hey! I'm your StudentCV AI career assistant. 👋
+
+        Tell me what you're working on — your CV, skills, education, first job, interview or career direction.
+
+      </div>
+
+    </div>
+
+
+    <div class="chat-input-area">
+
+      <form id="chatForm">
+
+        <div class="chat-input-wrap">
+
+          <input
+            id="chatInput"
+            class="chat-input"
+            type="text"
+            autocomplete="off"
+            placeholder="Ask your career question..."
+          >
+
+          <button
+            id="sendButton"
+            class="send-button"
+            type="submit"
+            aria-label="Send">
+
+            <i class="fa-solid fa-arrow-up"></i>
+
+          </button>
+
+        </div>
+
+      </form>
+
+      <div class="chat-note">
+        StudentCV AI can make mistakes. Review important information.
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <button
+    id="chatToggle"
+    class="chat-toggle"
+    aria-label="Open AI Assistant">
+
+    <i class="fa-solid fa-robot"></i>
+
+  </button>
+
+</div>
+
+
+<script>
+
+/* =========================================
+   STUDENTCV AI CHAT
+========================================= */
+
+const chatToggle = document.getElementById("chatToggle");
+const chatWindow = document.getElementById("chatWindow");
+const chatClose = document.getElementById("chatClose");
+const chatForm = document.getElementById("chatForm");
+const chatInput = document.getElementById("chatInput");
+const chatMessages = document.getElementById("chatMessages");
+const sendButton = document.getElementById("sendButton");
+
+
+let messages = [];
+
+
+/* OPEN CHAT */
+
+chatToggle.addEventListener("click", () => {
+
+  const isOpen = chatWindow.classList.toggle("open");
+
+  chatToggle.classList.toggle("active", isOpen);
+
+  chatToggle.innerHTML = isOpen
+    ? '<i class="fa-solid fa-xmark"></i>'
+    : '<i class="fa-solid fa-robot"></i>';
+
+  if(isOpen){
+    setTimeout(() => chatInput.focus(),150);
+  }
+
+});
+
+
+/* CLOSE CHAT */
+
+chatClose.addEventListener("click", () => {
+
+  chatWindow.classList.remove("open");
+  chatToggle.classList.remove("active");
+
+  chatToggle.innerHTML =
+    '<i class="fa-solid fa-robot"></i>';
+
+});
+
+
+/* ADD MESSAGE */
+
+function addMessage(text, type){
+
+  const message = document.createElement("div");
+
+  message.className =
+    "message " +
+    (type === "user"
+      ? "user-message"
+      : "ai-message");
+
+  message.textContent = text;
+
+  chatMessages.appendChild(message);
+
+  chatMessages.scrollTop =
+    chatMessages.scrollHeight;
+
+}
+
+
+/* TYPING */
+
+function showTyping(){
+
+  const typing = document.createElement("div");
+
+  typing.className =
+    "message ai-message";
+
+  typing.id = "typing";
+
+  typing.innerHTML = `
+    <div class="typing">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  `;
+
+  chatMessages.appendChild(typing);
+
+  chatMessages.scrollTop =
+    chatMessages.scrollHeight;
+
+}
+
+
+function hideTyping(){
+
+  const typing =
+    document.getElementById("typing");
+
+  if(typing){
+    typing.remove();
+  }
+
+}
+
+
+/* SEND */
+
+chatForm.addEventListener("submit", async (event) => {
+
+  event.preventDefault();
+
+  const text =
+    chatInput.value.trim();
+
+  if(!text){
+    return;
+  }
+
+
+  addMessage(text,"user");
+
+  messages.push({
+    role:"user",
+    content:text
+  });
+
+
+  chatInput.value = "";
+
+  sendButton.disabled = true;
+  chatInput.disabled = true;
+
+  showTyping();
+
+
+  try{
+
+    const response =
+      await fetch("/api/chat",{
+
+        method:"POST",
+
+        headers:{
+          "Content-Type":"application/json"
+        },
+
+        body:JSON.stringify({
+          messages
+        })
+
+      });
+
+
+    const data =
+      await response.json();
+
+
+    hideTyping();
+
+
+    if(!response.ok){
+
+      throw new Error(
+        data.error ||
+        "Something went wrong."
+      );
+
+    }
+
+
+    const reply =
+      data.reply ||
+      "I couldn't generate a response.";
+
+
+    addMessage(reply,"ai");
+
+
+    messages.push({
+      role:"assistant",
+      content:reply
+    });
+
+
+  }catch(error){
+
+    hideTyping();
+
+    console.error(error);
+
+    addMessage(
+      "Sorry, something went wrong while connecting to the AI. Please try again.",
+      "ai"
+    );
+
+  }
+
+
+  sendButton.disabled = false;
+  chatInput.disabled = false;
+
+  chatInput.focus();
+
+});
+
+
+/* ENTER = SEND */
+
+chatInput.addEventListener("keydown",(event)=>{
+
+  if(event.key === "Enter" && !event.shiftKey){
+
+    event.preventDefault();
+
+    chatForm.requestSubmit();
+
+  }
+
+});
+
+
+/* CLOSE CHAT WITH ESC */
+
+document.addEventListener("keydown",(event)=>{
+
+  if(event.key === "Escape"){
+
+    chatWindow.classList.remove("open");
+
+    chatToggle.classList.remove("active");
+
+    chatToggle.innerHTML =
+      '<i class="fa-solid fa-robot"></i>';
+
+  }
+
+});
+
+</script>
 
 </body>
 </html>
