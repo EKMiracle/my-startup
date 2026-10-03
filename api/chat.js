@@ -23,18 +23,22 @@ export default async function handler(req, res) {
       )
       .slice(-20);
 
-    const response = await fetch(
-      "https://api.openai.com/v1/responses",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": `Bearer ${process.env.OPENAI_API_KEY}`
-        },
-        body: JSON.stringify({
-          model: "gpt-6-luna",
+    /*
+      Gemini expects:
+      user      -> user
+      assistant -> model
+    */
 
-          instructions: `
+    const contents = cleanMessages.map((message) => ({
+      role: message.role === "assistant" ? "model" : "user",
+      parts: [
+        {
+          text: message.content
+        }
+      ]
+    }));
+
+    const systemInstruction = `
 You are StudentCV AI — a premium AI career assistant designed for students,
 graduates and young professionals.
 
@@ -58,7 +62,7 @@ You can help with:
 IMPORTANT RULES:
 
 1. Never invent a user's education, experience, skills, achievements,
-   certificates or qualifications.
+certificates or qualifications.
 
 2. If important information is missing, ask the user for it.
 
@@ -67,16 +71,16 @@ IMPORTANT RULES:
 4. Make CV text professional, concise and recruiter-friendly.
 
 5. Students may have little or no professional experience.
-   Help them present:
-   - education
-   - university projects
-   - personal projects
-   - volunteering
-   - freelance work
-   - technical skills
-   - soft skills
-   - extracurricular activities
-   in a professional way.
+Help them present:
+- education
+- university projects
+- personal projects
+- volunteering
+- freelance work
+- technical skills
+- soft skills
+- extracurricular activities
+in a professional way.
 
 6. Do not make fake claims just to make the CV look better.
 
@@ -86,29 +90,43 @@ IMPORTANT RULES:
 
 9. Answer in the same language as the user.
 
-10. Your tone is:
-    professional,
-    friendly,
-    intelligent,
-    modern,
-    supportive,
-    concise.
+10. Your tone should be:
+professional,
+friendly,
+intelligent,
+modern,
+supportive,
+concise.
 
 You are part of the StudentCV AI product.
 Do not describe yourself as ChatGPT unless the user specifically asks.
-`,
+`;
 
-          input: cleanMessages.map((message) => ({
-            role: message.role,
-            content: [
+    const response = await fetch(
+      "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent",
+      {
+        method: "POST",
+
+        headers: {
+          "Content-Type": "application/json",
+          "x-goog-api-key": process.env.GEMINI_API_KEY
+        },
+
+        body: JSON.stringify({
+          system_instruction: {
+            parts: [
               {
-                type: "input_text",
-                text: message.content
+                text: systemInstruction
               }
             ]
-          })),
+          },
 
-          max_output_tokens: 900
+          contents,
+
+          generationConfig: {
+            temperature: 0.7,
+            maxOutputTokens: 900
+          }
         })
       }
     );
@@ -116,35 +134,27 @@ Do not describe yourself as ChatGPT unless the user specifically asks.
     const data = await response.json();
 
     if (!response.ok) {
-      console.error("OpenAI API error:", data);
+      console.error("Gemini API error:", data);
 
       return res.status(response.status).json({
         error:
           data?.error?.message ||
-          "OpenAI request failed."
+          "Gemini API request failed."
       });
     }
 
-    let reply = "";
-
-    if (Array.isArray(data.output)) {
-      for (const item of data.output) {
-        if (Array.isArray(item.content)) {
-          for (const content of item.content) {
-            if (
-              content.type === "output_text" &&
-              typeof content.text === "string"
-            ) {
-              reply += content.text;
-            }
-          }
-        }
-      }
-    }
+    const reply =
+      data?.candidates?.[0]?.content?.parts
+        ?.map((part) => part.text || "")
+        .join("")
+        .trim();
 
     if (!reply) {
-      reply =
-        "I couldn't generate a response. Please try again.";
+      console.error("Unexpected Gemini response:", data);
+
+      return res.status(500).json({
+        error: "Gemini returned an empty response."
+      });
     }
 
     return res.status(200).json({
@@ -155,7 +165,7 @@ Do not describe yourself as ChatGPT unless the user specifically asks.
     console.error("Server error:", error);
 
     return res.status(500).json({
-      error: "Something went wrong on the server."
+      error: "Internal server error."
     });
   }
 }
